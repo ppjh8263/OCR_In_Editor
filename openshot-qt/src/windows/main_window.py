@@ -1096,28 +1096,9 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         self.statusBar = QStatusBar()
         self.setStatusBar(self.statusBar)
 
-        # Determine path for saved frame - Default export path
-        '''
-        여기부분에서 서버로 넘어가야 합니다!
-        '''
-        # 여기서 경로를 서버로 설정
-        recommended_path = os.path.join(info.HOME_PATH, 'Desktop')
-
-        # 프레임 명과 경로를 정하고
-        framePath = "%s/Frame-%05d.png" % (recommended_path, self.preview_thread.current_frame)
-
-        # 여기 밑에서 경로에 파일을 저장
-        if not framePath:
-            # No path specified (save frame cancelled)
-            self.statusBar.showMessage(_("Save Frame cancelled..."), 5000)
-            return
-
-        # Append .png if needed
-        if not framePath.endswith(".png"):
-            framePath = "%s.png" % framePath
 
         # app.updates.update_untracked(["export_path"], os.path.dirname(framePath))
-        log.info("Sending frame to %s", framePath)
+        log.info("Sending frame to server")
 
         # Pause playback (to prevent crash since we are fixing to change the timeline's max size)
         self.actionPlay_trigger(force="pause")
@@ -1131,12 +1112,6 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         self.timeline_sync.timeline.SetMaxSize(app.project.get("width"), app.project.get("height"))
         self.cache_object.Clear()
 
-        # Check if file exists, if it does, get the lastModified time
-        if os.path.exists(framePath):
-            framePathTime = QFileInfo(framePath).lastModified()
-        else:
-            framePathTime = QDateTime()
-
         # Get and Save the frame
         # (return is void, so we cannot check for success/fail here
         # - must use file modification timestamp)
@@ -1144,9 +1119,6 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         #     self.timeline_sync.timeline, self.preview_thread.current_frame).GetImage() #.Save(framePath, 1.0)
         ### [Modify] ###
         img = self.videoPreview.current_image       # img = get_app().window.videoPreview.current_image
-        print(img)
-        pixmap = QPixmap.fromImage(img)
-        self.vidCap_label.setPixmap(pixmap)
         # Convert Image to base64 - utf-8
         byte_array = QByteArray()
         buffer = QBuffer(byte_array)
@@ -1164,10 +1136,10 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         ### [End] ###
 
         # Show message to user
-        if os.path.exists(framePath) and (QFileInfo(framePath).lastModified() > framePathTime):
-            self.statusBar.showMessage(_("Saved Frame to %s" % framePath), 5000)
+        if response.status_code == 200:
+            self.statusBar.showMessage(_("Send Frame is done"), 5000)
         else:
-            self.statusBar.showMessage(_("Failed to save image to %s" % framePath), 5000)
+            self.statusBar.showMessage(_("Failed to send image"), 5000)
 
         # Reset the MaxSize to match the preview and reset the preview cache
         viewport_rect = self.videoPreview.centeredViewport(self.videoPreview.width(), self.videoPreview.height())
@@ -2946,9 +2918,7 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         self.vidCaps_model = VidCapsModel()
         self.vidCaps_model.update_model()
         self.vidCapListView = VidCapsListView(self.vidCaps_model)
-        # self.tabvidCaps.layout().addWidget(self.vidCapListView)
-        self.vidCap_label = QLabel()
-        self.tabvidCaps.layout().addWidget(self.vidCap_label)
+        self.tabvidCaps.layout().addWidget(self.vidCapListView)
 
     def __init__(self, *args, mode=None):
 
