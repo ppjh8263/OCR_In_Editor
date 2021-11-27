@@ -60,6 +60,9 @@ class TimelineSync(UpdateInterface):
         self.timeline.info.sample_rate = sample_rate
         self.timeline.info.channels = channels
 
+        # Save bbox attribute
+        self.detections = {}
+
         # Open the timeline reader
         self.timeline.Open()
 

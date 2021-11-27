@@ -144,16 +144,11 @@ class VidCapsListView(QListView):
         self.win = app.window
 
         # Get Model data
-        self.emojis_model = model
-        self.group_model = self.emojis_model.group_model
-        self.model = self.emojis_model.proxy_model
+        self.vidCap_model = model
+        self.group_model = self.vidCap_model.group_model
+        self.model = self.vidCap_model.proxy_model
 
-        # Keep track of mouse press start position to determine when to start drag
-        self.setAcceptDrops(True)
-        self.setDragEnabled(True)
-        self.setDropIndicatorShown(True)
-
-        # Setup header columns
+        # # Setup header columns
         self.setModel(self.model)
         self.setIconSize(QSize(75, 75))
         self.setGridSize(QSize(90, 100))
@@ -162,25 +157,3 @@ class VidCapsListView(QListView):
         self.setUniformItemSizes(True)
         self.setWordWrap(False)
         self.setStyleSheet('QListView::item { padding-top: 2px; }')
-
-        # Get default emoji filter group
-        s = get_app().get_settings()
-        default_type = s.get('emoji_group_filter') or 'smileys-emotion'
-
-        # setup filter events
-        self.win.emojisFilter.textChanged.connect(self.filter_changed)
-
-        # Loop through emoji groups, and populate emoji filter drop-down
-        self.win.emojiFilterGroup.clear()
-        self.win.emojiFilterGroup.addItem(_("Show All"), "")
-        dropdown_index = 0
-        for index, emoji_type in enumerate(sorted(self.emojis_model.emoji_groups)):
-            self.win.emojiFilterGroup.addItem(_(emoji_type.capitalize()), emoji_type)
-            if emoji_type == default_type:
-                # Initialize emoji filter group to settings
-                # Off by one, due to 'show all' choice above
-                dropdown_index = index + 1
-
-        if self.win.mode != "unittest":
-            self.win.emojiFilterGroup.currentIndexChanged.connect(self.group_changed)
-        self.win.emojiFilterGroup.setCurrentIndex(dropdown_index)
