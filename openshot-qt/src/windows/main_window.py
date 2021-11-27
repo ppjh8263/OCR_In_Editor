@@ -1126,13 +1126,22 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         img.save(buffer, 'jpg', 75)
         encoded = b64encode(buffer.data()).decode('utf-8')
         # Send image to server & Get RESPONSE
-        url = "http://101.101.211.34:6013/classification/base64"
+        url = "http://101.101.211.34:6013/bbox_demo/base64"
         files = {
             'file': encoded
         }  
         
         response = requests.post(url=url, files=files)
         print("Sended image", response.json())
+
+        # GET timeline time
+        fps = get_app().project.get("fps")
+        fps_float = float(fps["num"]) / float(fps["den"])
+        current_position = (self.preview_thread.current_frame - 1) / fps_float
+        current_timestamp = secondsToTimecode(current_position, fps["num"], fps["den"], use_milliseconds=True)
+        # ADD bbox detections to timeline object
+        self.timeline_sync.detections[current_timestamp] = response.json()
+        self.vidCaps_model.update_model()
         ### [End] ###
 
         # Show message to user
