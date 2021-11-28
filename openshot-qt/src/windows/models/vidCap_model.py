@@ -35,6 +35,7 @@ import openshot  # Python module for libopenshot (required video editing module 
 from classes import info
 from classes.logger import log
 from classes.app import get_app
+from classes.time_parts import secondsToTimecode
 
 import json
 
@@ -75,95 +76,33 @@ class VidCapsModel():
         # Add Headers
         self.model.setHorizontalHeaderLabels([_("Name")])
 
-        # Get emoji metadata
-        emoji_metadata_path = os.path.join(info.PATH, "emojis", "data", "openmoji-optimized.json")
-        with open(emoji_metadata_path, 'r', encoding="utf-8") as f:
-            emoji_lookup = json.load(f)
-
-        # get a list of files in the OpenShot /emojis directory
-        emojis_dir = os.path.join(info.PATH, "emojis", "color", "svg")
-        emoji_paths = [{"type": "common", "dir": emojis_dir, "files": os.listdir(emojis_dir)}, ]
-
-        # Add optional user-defined transitions folder
-        if os.path.exists(info.EMOJIS_PATH) and os.listdir(info.EMOJIS_PATH):
-            emoji_paths.append({"type": "user", "dir": info.EMOJIS_PATH, "files": os.listdir(info.EMOJIS_PATH)})
-
-        for group in emoji_paths:
-            dir = group["dir"]
-            files = group["files"]
-
-            for filename in sorted(files):
-                path = os.path.join(dir, filename)
-                fileBaseName = os.path.splitext(filename)[0]
-
-                # Skip hidden files (such as .DS_Store, etc...)
-                if filename[0] == "." or "thumbs.db" in filename.lower():
-                    continue
-
-                # get name of transition
-                emoji = emoji_lookup.get(fileBaseName, {})
-                emoji_name = _(emoji.get("annotation", fileBaseName).capitalize())
-                emoji_type = _(emoji.get("group", "user").split('-')[0].capitalize())
-
-                # Track unique emoji groups
-                if emoji_type not in self.emoji_groups:
-                    self.emoji_groups.append(emoji_type)
-
-                # Check for thumbnail path (in build-in cache)
-                thumb_path = os.path.join(info.IMAGES_PATH, "cache",  "{}.png".format(fileBaseName))
-
-                # Check built-in cache (if not found)
-                if not os.path.exists(thumb_path):
-                    # Check user folder cache
-                    thumb_path = os.path.join(info.CACHE_PATH, "{}.png".format(fileBaseName))
-
-                # Generate thumbnail (if needed)
-                if not os.path.exists(thumb_path):
-
-                    try:
-                        # Reload this reader
-                        clip = openshot.Clip(path)
-                        reader = clip.Reader()
-
-                        # Open reader
-                        reader.Open()
-
-                        # Save thumbnail
-                        reader.GetFrame(0).Thumbnail(
-                            thumb_path, 75, 75,
-                            os.path.join(info.IMAGES_PATH, "mask.png"),
-                            "", "#000", True, "png", 85
-                        )
-                        reader.Close()
-                        clip.Close()
-
-                    except Exception:
-                        # Handle exception
-                        log.info('Invalid emoji image file: %s' % filename)
-                        msg = QMessageBox()
-                        msg.setText(_("{} is not a valid image file.".format(filename)))
-                        msg.exec_()
-                        continue
-
-                row = []
-
-                # Set emoji data
-                col = QStandardItem("Name")
-                col.setIcon(QIcon(thumb_path))
-                col.setText(emoji_name)
-                col.setToolTip(emoji_name)
-                col.setData(path)
-                col.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled | Qt.ItemIsUserCheckable | Qt.ItemIsDragEnabled)
-                row.append(col)
-
-                # Append filterable group
-                col = QStandardItem(emoji_type)
-                row.append(col)
-
-                # Append ROW to MODEL (if does not already exist in model)
-                if path not in self.model_paths:
-                    self.model.appendRow(row)
-                    self.model_paths[path] = path
+        # get BBOX with current timestamp
+        bboxs = self.get_bbox()
+        # view bboxes in VidCaps
+        for bb in bboxs:
+            row = []
+            col = QStandardItem("Name")
+            col.setText(bb["translation"])
+            col.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled | Qt.ItemIsUserCheckable | Qt.ItemIsDragEnabled)
+            row.append(col)
+            self.model.appendRow(row)
+    
+    ### [Modify] ###
+    def get_bbox(self):
+        if not hasattr(self.app.window, "preview_thread"):
+            return []
+        
+        # get current timestamp
+        fps = get_app().project.get("fps")
+        fps_float = float(fps["num"]) / float(fps["den"])
+        current_position = (self.app.window.preview_thread.current_frame - 1) / fps_float
+        current_timestamp = secondsToTimecode(current_position, fps["num"], fps["den"], use_milliseconds=True)
+        # get detection result with current timestamp
+        current_bbox = []
+        if current_timestamp in self.app.window.timeline_sync.detections:
+            current_bbox = self.app.window.timeline_sync.detections[current_timestamp]
+        return current_bbox
+    ### [End] ###
 
     def __init__(self, *args):
 
