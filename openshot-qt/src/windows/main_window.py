@@ -964,6 +964,11 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         # Notify preview thread
         self.timeline.movePlayhead(position_frames)
 
+        # Refresh vidCap view
+        app = get_app()
+        app.window.vidCapListView.update()
+        print(app.window.vidCapListView.bboxs)
+
     def SetPlayheadFollow(self, enable_follow):
         """ Enable / Disable follow mode """
         self.timeline.SetPlayheadFollow(enable_follow)
@@ -1141,7 +1146,7 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         current_timestamp = secondsToTimecode(current_position, fps["num"], fps["den"], use_milliseconds=True)
         # ADD bbox detections to timeline object
         self.timeline_sync.detections[current_timestamp] = response.json()
-        self.vidCaps_model.update_model()
+        self.vidCapListView.update()
         ### [End] ###
 
         # Show message to user
@@ -2924,10 +2929,14 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         self.tabEmojis.layout().addWidget(self.emojiListView)
 
         # Setup vidCaps view
-        self.vidCaps_model = VidCapsModel()
-        self.vidCaps_model.update_model()
-        self.vidCapListView = VidCapsListView(self.vidCaps_model)
+        # self.vidCaps_model = VidCapsModel()
+        # self.vidCapListView = VidCapsListView(self.vidCaps_model)
+        # self.vidCaps_model.update_model()
+        ### [Modify] ###
+        self.vidCapListView = VidCapsListView()
+        self.vidCapListView.update()
         self.tabvidCaps.layout().addWidget(self.vidCapListView)
+        ### [End] ###
 
     def __init__(self, *args, mode=None):
 
