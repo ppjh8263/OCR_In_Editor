@@ -25,8 +25,8 @@
  along with OpenShot Library.  If not, see <http://www.gnu.org/licenses/>.
  """
 
-from PyQt5.QtCore import QMimeData, QSize, QPoint, Qt, pyqtSlot, QRegExp, QObjectCleanupHandler 
-from PyQt5.QtGui import QDrag
+from PyQt5.QtCore import QMimeData, QSize, QPoint, Qt, pyqtSlot, QRegExp, QObjectCleanupHandler, QRectF
+from PyQt5.QtGui import QDrag, QPainter, QColor
 from PyQt5.QtWidgets import QListView, QCheckBox, QGridLayout, QListWidget, QBoxLayout, QWidget, QListWidgetItem
 
 import openshot  # Python module for libopenshot (required video editing module installed separately)
@@ -74,6 +74,8 @@ class VidCapsListView(QListWidget):
         layout = QBoxLayout(QBoxLayout.TopToBottom)
         self.viewer = QListWidget(self)
         for i, v in enumerate(self.listCheckBox):
+            if type(v) == int:
+                continue
             # Make checkbox
             self.listCheckBox[i] = QCheckBox(v["translation"], self)
             # Save check status in bboxs
@@ -90,8 +92,7 @@ class VidCapsListView(QListWidget):
             self.viewer.addItem(item)
 
         layout.addWidget(self.viewer)
-        self.setLayout(layout)
-            
+        self.setLayout(layout)        
 
     def clickBoxStateChanged(self, bbox):
         def stateChanged(state):
@@ -100,6 +101,7 @@ class VidCapsListView(QListWidget):
             else:
                 bbox['checked'] = True
             print(bbox)
+            self.win.videoPreview.repaint()
 
             # [later] repaint bbox
         return stateChanged
