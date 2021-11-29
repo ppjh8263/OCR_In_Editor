@@ -386,10 +386,22 @@ class VideoWidget(QWidget, updates.UpdateInterface):
             # Remove transform
             painter.resetTransform()
 
+        ### [Modify] ###
+        timestamp, bboxs = self.win.vidCapListView.get_bbox()
+        for bbox in bboxs[1:]:
+            if bbox["checked"]:
+                self.draw_text(painter, bbox["point"], bbox["translation"])
+        ### [End] ###
+
         # End painter
         painter.end()
 
         self.mutex.unlock()
+
+    def draw_text(self, qp, bbox, translation):
+        rectangle = QRectF(bbox[0], bbox[1], bbox[2], bbox[3])
+        qp.drawText(rectangle, translation)
+        # qp.setPen(QColor(255,0,0))
 
     def centeredViewport(self, width, height):
         """ Calculate size of viewport to maintain aspect ratio """
