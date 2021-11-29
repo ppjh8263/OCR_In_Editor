@@ -26,8 +26,8 @@
  """
 
 from PyQt5.QtCore import QMimeData, QSize, QPoint, Qt, pyqtSlot, QRegExp, QObjectCleanupHandler 
-from PyQt5.QtGui import QDrag
-from PyQt5.QtWidgets import QListView, QCheckBox, QGridLayout, QListWidget, QBoxLayout, QWidget, QListWidgetItem
+from PyQt5.QtGui import QDrag, QColor, QPainter, QImage, QPen, QFont, QPixmap
+from PyQt5.QtWidgets import QListView, QCheckBox, QGridLayout, QListWidget, QBoxLayout, QWidget, QListWidgetItem, QLabel
 
 import openshot  # Python module for libopenshot (required video editing module installed separately)
 from classes.query import File
@@ -56,6 +56,8 @@ class VidCapsListView(QListWidget):
         fps_float = float(fps["num"]) / float(fps["den"])
         current_position = (self.win.preview_thread.current_frame - 1) / fps_float
         current_timestamp = secondsToTimecode(current_position, fps["num"], fps["den"], use_milliseconds=True)
+
+        
         # get detection result with current timestamp
         current_bbox = []
         if current_timestamp in self.win.timeline_sync.detections:
@@ -73,15 +75,15 @@ class VidCapsListView(QListWidget):
 
         layout = QBoxLayout(QBoxLayout.TopToBottom)
         self.viewer = QListWidget(self)
-        for i, v in enumerate(self.listCheckBox):
+        for i, v in enumerate(self.listCheckBox[1:]):
             # Make checkbox
             self.listCheckBox[i] = QCheckBox(v["translation"], self)
             # Save check status in bboxs
-            if 'checked' not in self.bboxs[i]:
-                self.bboxs[i]['checked'] = True
-            self.listCheckBox[i].setChecked(self.bboxs[i]['checked']) 
+            if 'checked' not in self.bboxs[i+1]:
+                self.bboxs[i+1]['checked'] = True
+            self.listCheckBox[i].setChecked(self.bboxs[i+1]['checked']) 
             # Connect checkbox ChangeState function
-            self.listCheckBox[i].stateChanged.connect(self.clickBoxStateChanged(self.bboxs[i]))
+            self.listCheckBox[i].stateChanged.connect(self.clickBoxStateChanged(self.bboxs[i+1]))
             # Add checkbox to Widget
             item = QListWidgetItem(self.viewer)
             custom_widget = VidCapItem(self.listCheckBox[i])
@@ -91,14 +93,49 @@ class VidCapsListView(QListWidget):
 
         layout.addWidget(self.viewer)
         self.setLayout(layout)
-            
 
+#ing modify
+    def makeTextInBbox(self, bbox) :
+        # set bbox bg_color and font color
+        bg_color = QColor(Qt.black)
+        font_color = QColor(Qt.white)
+        title_string = ""
+
+        image = QPixmap(0, 0)
+
+        qp = QPainter()
+        qp.begin(self)
+
+        qp.setBrush(bg_color)
+        qp.drawRect(0, 0,bbox['point'][2],bbox['point'][3])
+
+        pen = QPen(font_color)
+        pen.setWidth(2)
+        qp.setPen(pen)
+
+        font = QFont()
+        font.setFamily('Times')
+        font.setBold(True)
+        font.setPointSize(24)
+        qp.setFont(font)
+
+        qp.drawText(150, 250, "bbox['translation']")
+        label1 = QLabel(self)
+        
+        #이미지 관련 클래스와 라벨 연결 
+        label1.setPixmap(image)
+ 
+        self.show()
+
+        qp.end()
+        
     def clickBoxStateChanged(self, bbox):
         def stateChanged(state):
             if state == 0:
                 bbox['checked'] = False
             else:
                 bbox['checked'] = True
+                # self.makeTextInBbox(bbox)
             print(bbox)
 
             # [later] repaint bbox
@@ -117,3 +154,4 @@ class VidCapsListView(QListWidget):
         self.setViewMode(QListView.ListMode)
         self.setResizeMode(QListView.Adjust)
         self.setStyleSheet('QListView::item { padding-top: 2px; }') 
+            
