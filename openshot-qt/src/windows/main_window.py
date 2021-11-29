@@ -967,7 +967,7 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         # Refresh vidCap view
         app = get_app()
         app.window.vidCapListView.update()
-        print(app.window.vidCapListView.bboxs)
+        # print(app.window.vidCapListView.bboxs)
 
     def SetPlayheadFollow(self, enable_follow):
         """ Enable / Disable follow mode """
