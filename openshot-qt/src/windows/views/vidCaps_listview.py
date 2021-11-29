@@ -64,7 +64,7 @@ class VidCapsListView(QListWidget):
 
     def update(self):
         timestamp, self.bboxs = self.get_bbox()
-        # view bboxes in VidCaps
+        # Refresh Layout
         cleaner = QObjectCleanupHandler()
         cleaner.add(self.layout())
         cleaner.clear()
@@ -103,12 +103,6 @@ class VidCapsListView(QListWidget):
 
             # [later] repaint bbox
         return stateChanged
-
-    def clearLayout(self, layout):
-        while layout.count():
-            child = layout.takeAt(0)
-            if child.widget():
-                child.widget().deleteLater()
 
     def __init__(self):
         # Invoke parent init

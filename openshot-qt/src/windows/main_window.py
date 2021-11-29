@@ -2928,10 +2928,6 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         self.emojiListView = EmojisListView(self.emojis_model)
         self.tabEmojis.layout().addWidget(self.emojiListView)
 
-        # Setup vidCaps view
-        # self.vidCaps_model = VidCapsModel()
-        # self.vidCapListView = VidCapsListView(self.vidCaps_model)
-        # self.vidCaps_model.update_model()
         ### [Modify] ###
         self.vidCapListView = VidCapsListView()
         self.vidCapListView.update()
