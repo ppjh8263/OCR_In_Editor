@@ -25,135 +25,95 @@
  along with OpenShot Library.  If not, see <http://www.gnu.org/licenses/>.
  """
 
-from PyQt5.QtCore import QMimeData, QSize, QPoint, Qt, pyqtSlot, QRegExp
+from PyQt5.QtCore import QMimeData, QSize, QPoint, Qt, pyqtSlot, QRegExp, QObjectCleanupHandler 
 from PyQt5.QtGui import QDrag
-from PyQt5.QtWidgets import QListView
+from PyQt5.QtWidgets import QListView, QCheckBox, QGridLayout, QListWidget, QBoxLayout, QWidget, QListWidgetItem
 
 import openshot  # Python module for libopenshot (required video editing module installed separately)
 from classes.query import File
 from classes.app import get_app
 from classes.logger import log
+from classes.time_parts import secondsToTimecode
 import json
 
+class VidCapItem(QWidget):
+    def __init__(self, checkbox):
+        QWidget.__init__(self, flags=Qt.Widget)
+        layout = QBoxLayout(QBoxLayout.TopToBottom)
+        layout.addWidget(checkbox)
+        layout.setSizeConstraint(QBoxLayout.SetFixedSize)
+        self.setLayout(layout)
 
-class VidCapsListView(QListView):
+class VidCapsListView(QListWidget):
     """ A QListView QWidget used on the main window """
-    drag_item_size = 48
 
-    def dragEnterEvent(self, event):
-        # If dragging urls onto widget, accept
-        if event.mimeData().hasUrls():
-            event.setDropAction(Qt.CopyAction)
-            event.accept()
+    def get_bbox(self):
+        if not hasattr(self.win, "preview_thread"):
+            return "00:00:00.000", []
+        
+        # get current timestamp
+        fps = get_app().project.get("fps")
+        fps_float = float(fps["num"]) / float(fps["den"])
+        current_position = (self.win.preview_thread.current_frame - 1) / fps_float
+        current_timestamp = secondsToTimecode(current_position, fps["num"], fps["den"], use_milliseconds=True)
+        # get detection result with current timestamp
+        current_bbox = []
+        if current_timestamp in self.win.timeline_sync.detections:
+            current_bbox = self.win.timeline_sync.detections[current_timestamp]
+        return current_timestamp, current_bbox
 
-    def startDrag(self, event):
-        """ Override startDrag method to display custom icon """
+    def update(self):
+        timestamp, self.bboxs = self.get_bbox()
+        # Refresh Layout
+        cleaner = QObjectCleanupHandler()
+        cleaner.add(self.layout())
+        cleaner.clear()
 
-        # Get image of selected item
-        selected = self.selectedIndexes()
+        self.listCheckBox = self.bboxs[::]
 
-        # Start drag operation
-        drag = QDrag(self)
-        drag.setMimeData(self.model.mimeData(selected))
-        icon = self.model.data(selected[0], Qt.DecorationRole)
-        drag.setPixmap(icon.pixmap(QSize(self.drag_item_size, self.drag_item_size)))
-        drag.setHotSpot(QPoint(self.drag_item_size / 2, self.drag_item_size / 2))
+        layout = QBoxLayout(QBoxLayout.TopToBottom)
+        self.viewer = QListWidget(self)
+        for i, v in enumerate(self.listCheckBox):
+            # Make checkbox
+            self.listCheckBox[i] = QCheckBox(v["translation"], self)
+            # Save check status in bboxs
+            if 'checked' not in self.bboxs[i]:
+                self.bboxs[i]['checked'] = True
+            self.listCheckBox[i].setChecked(self.bboxs[i]['checked']) 
+            # Connect checkbox ChangeState function
+            self.listCheckBox[i].stateChanged.connect(self.clickBoxStateChanged(self.bboxs[i]))
+            # Add checkbox to Widget
+            item = QListWidgetItem(self.viewer)
+            custom_widget = VidCapItem(self.listCheckBox[i])
+            item.setSizeHint(custom_widget.sizeHint())
+            self.viewer.setItemWidget(item, custom_widget)
+            self.viewer.addItem(item)
 
-        # Create emoji file before drag starts
-        data = json.loads(drag.mimeData().text())
-        file = self.add_file(data[0])
+        layout.addWidget(self.viewer)
+        self.setLayout(layout)
+            
 
-        # Update mimedata for emoji
-        data = QMimeData()
-        data.setText(json.dumps([file.id]))
-        data.setHtml("clip")
-        drag.setMimeData(data)
+    def clickBoxStateChanged(self, bbox):
+        def stateChanged(state):
+            if state == 0:
+                bbox['checked'] = False
+            else:
+                bbox['checked'] = True
+            print(bbox)
 
-        # Start drag
-        drag.exec_()
+            # [later] repaint bbox
+        return stateChanged
 
-    def add_file(self, filepath):
-        # Add file into project
-
-        app = get_app()
-        _ = app._tr
-
-        # Check for this path in our existing project data
-        # ["1F595-1F3FE",
-        # "openshot-qt-git/src/emojis/color/svg/1F595-1F3FE.svg"]
-        file = File.get(path=filepath)
-
-        # If this file is already found, exit
-        if file:
-            return file
-
-        # Load filepath in libopenshot clip object (which will try multiple readers to open it)
-        clip = openshot.Clip(filepath)
-
-        # Get the JSON for the clip's internal reader
-        try:
-            reader = clip.Reader()
-            file_data = json.loads(reader.Json())
-
-            # Determine media type
-            file_data["media_type"] = "image"
-
-            # Save new file to the project data
-            file = File()
-            file.data = file_data
-            file.save()
-            return file
-
-        except Exception as ex:
-            # Log exception
-            log.warning("Failed to import file: {}".format(str(ex)))
-
-    @pyqtSlot(int)
-    def group_changed(self, index=-1):
-        item = get_app().window.emojiFilterGroup.itemData(index)
-        self.group_model.setFilterFixedString(item)
-        self.group_model.setFilterKeyColumn(1)
-
-        # Save current emoji filter to settings
-        s = get_app().get_settings()
-        setting_emoji_group = s.get('emoji_group_filter') or 'smileys-emotion'
-        if setting_emoji_group != item:
-            s.set('emoji_group_filter', item)
-
-        self.refresh_view()
-
-    @pyqtSlot(str)
-    def filter_changed(self, filter_text=None):
-        """Filter emoji with proxy class"""
-
-        self.model.setFilterRegExp(QRegExp(filter_text, Qt.CaseInsensitive))
-        self.model.setFilterKeyColumn(0)
-        self.refresh_view()
-
-    def refresh_view(self):
-        col = self.model.sortColumn()
-        self.model.sort(col)
-
-    def __init__(self, model):
+    def __init__(self):
         # Invoke parent init
         QListView.__init__(self)
 
         # Get external references
         app = get_app()
         _ = app._tr
-        self.win = app.window
+        self.win = app.window   
 
-        # Get Model data
-        self.vidCap_model = model
-        self.group_model = self.vidCap_model.group_model
-        self.model = self.vidCap_model.proxy_model
-
-        # # Setup header columns
-        self.setModel(self.model)
-        self.setIconSize(QSize(75, 75))
-        self.setGridSize(QSize(90, 100))
-        self.setViewMode(QListView.IconMode)
+        # Setup View style
+        self.setViewMode(QListView.ListMode)
         self.setResizeMode(QListView.Adjust)
-        self.setUniformItemSizes(True)
-        self.setWordWrap(False)
-        self.setStyleSheet('QListView::item { padding-top: 2px; }')
+        self.setStyleSheet('QListView::item { padding-top: 2px; }') 
