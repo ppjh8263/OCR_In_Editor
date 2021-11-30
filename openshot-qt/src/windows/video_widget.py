@@ -29,7 +29,7 @@ from PyQt5.QtCore import (
     Qt, QCoreApplication, QPointF, QPoint, QRect, QRectF, QSize, QMutex, QTimer
 )
 from PyQt5.QtGui import (
-    QTransform, QPainter, QIcon, QColor, QPen, QBrush, QCursor, QImage, QRegion
+    QTransform, QPainter, QIcon, QColor, QPen, QBrush, QCursor, QImage, QRegion, QPolygon
 )
 from PyQt5.QtWidgets import QSizePolicy, QWidget, QPushButton
 
@@ -399,8 +399,19 @@ class VideoWidget(QWidget, updates.UpdateInterface):
         self.mutex.unlock()
 
     def draw_text(self, qp, bbox, translation):
-        rectangle = QRectF(bbox[0], bbox[1], bbox[2], bbox[3])
-        qp.drawText(rectangle, translation)
+        # make qpoint list
+        qpoint_list = []
+        for point in bbox :
+            qpoint_list.append(QPoint(point[0],point[1]))
+
+        # rectangle = QRectF(bbox[0], bbox[1], bbox[2], bbox[3])
+        # qp.drawText(rectangle, translation)
+        
+        polygon = QPolygon(qpoint_list)
+        qp.setPen(QPen(Qt.black,2,Qt.SolidLine,Qt.RoundCap))
+        qp.setBrush(QBrush(Qt.darkGreen,Qt.SolidPattern))
+        qp.drawPolygon(polygon)
+        qp.drawText(qpoint_list[0], translation)
         # qp.setPen(QColor(255,0,0))
 
     def centeredViewport(self, width, height):
