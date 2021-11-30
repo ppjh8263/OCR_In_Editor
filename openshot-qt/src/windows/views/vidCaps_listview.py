@@ -78,7 +78,7 @@ class VidCapsListView(QListWidget):
         self.viewer = QListWidget(self)
 
         for i, v in enumerate(self.listCheckBox[1:]):
-             if type(v) == int:
+            if type(v) == int:
                 continue
             # Make checkbox
             self.listCheckBox[i] = QCheckBox(v["translation"], self)
