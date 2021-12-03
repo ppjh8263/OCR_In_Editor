@@ -9,9 +9,9 @@ grpcio==1.29.0
 idna==2.9
 importlib-metadata==1.6.0
 Markdown==3.2.2
-numpy==1.18.4
+numpy==1.21.4
 oauthlib==3.1.0
-opencv-python==4.2.0.34
+opencv-python==4.2.0
 Pillow==7.1.2
 Polygon3==3.0.8
 protobuf==3.12.1
