@@ -133,7 +133,7 @@ datasets/
 
 # model file
 output/
-*/nohup.out
+*.out
 runs/
 saved/
 
