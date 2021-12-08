@@ -52,7 +52,7 @@ Note: check the "config.json" file, which is used to adjust the training configu
 ## Inference
 Test the model you trained
 ```
-python inference.py
+python eval.py
 ```
 
 If you want to change "your model, input images, output folder", check the eval.py file.
