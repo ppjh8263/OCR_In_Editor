@@ -1,0 +1,37 @@
+{
+    "name": "E2E-STS",
+    "cuda": true,
+    "gpus": [0],
+    "model": "OCRModel_With_Skip",
+    "data_loader": {
+        "data_dir": "datasets",
+        "input_size": 512,
+        "batch_size": 4,
+        "shuffle": true,
+        "workers": 2
+    },
+    "validation": {
+        "skip_lt_epoch": 0,
+        "validation_split": 0.1,
+        "shuffle": true
+    },
+    "optimizer_type": "Adam",
+    "optimizer": {
+        "lr": 0.0001,
+        "weight_decay": 1e-5
+    },
+    "trainer": {
+        "epochs": 1,
+        "save_dir": "saved/",
+        "save_freq": 3,
+        "verbosity": 2,
+        "print_step": 25,
+        "monitor": "val_hmean",
+        "monitor_mode": "max"
+    },
+    "debug": false,
+    "optuna":{
+        "trial": 1,
+        "study_name": "test"
+    }
+}
