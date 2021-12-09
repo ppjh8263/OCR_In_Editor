@@ -191,6 +191,10 @@ def detect(score_map, geo_map, score_map_thresh=0.8, box_thresh=0.1, nms_thres=0
     boxes = boxes[boxes[:, 8] > box_thresh]
     return boxes
 
+def eval_metrics(self, pred, gt):
+    precious, recall, hmean = self.metrics(pred, gt)
+    return np.array([precious, recall, hmean])
+
 
 def predict(im_fn, model, with_img=False, output_dir=None, with_gpu=False):
     im = cv2.imread(im_fn.as_posix())[:, :, ::-1]

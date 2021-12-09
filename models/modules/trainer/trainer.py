@@ -4,6 +4,7 @@ import numpy as np
 from modules.utils.converter import keys
 from modules.base.base_trainer import BaseTrainer
 from modules.utils.converter import StringLabelConverter
+from modules.utils.util import eval_metrics
 
 
 class Trainer(BaseTrainer):
@@ -31,10 +32,6 @@ class Trainer(BaseTrainer):
         for __tensors in tensors:
             t.append(__tensors.to(self.device))
         return t
-
-    def _eval_metrics(self, pred, gt):
-        precious, recall, hmean = self.metrics(pred, gt)
-        return np.array([precious, recall, hmean])
 
     def _train_epoch(self, epoch):
         """
@@ -89,7 +86,7 @@ class Trainer(BaseTrainer):
                 pred_transcripts = np.array(pred_transcripts)
 
                 gt_fns = pred_fns
-                total_metrics += self._eval_metrics((pred_boxes, pred_transcripts, pred_fns),
+                total_metrics += eval_metrics(self, (pred_boxes, pred_transcripts, pred_fns),
                                                     (boxes, transcripts, gt_fns))
 
                 if self.verbosity >= 2 and batch_idx % self.log_step == 0:
@@ -151,7 +148,7 @@ class Trainer(BaseTrainer):
                     pred_transcripts = np.array(pred_transcripts)
 
                     gt_fns = [imagePaths[i] for i in mapping]
-                    total_val_metrics += self._eval_metrics((pred_boxes, pred_transcripts, pred_fns),
+                    total_val_metrics += eval_metrics(self, (pred_boxes, pred_transcripts, pred_fns),
                                                             (boxes, transcripts, gt_fns))
 
                     if self.verbosity >= 2:
