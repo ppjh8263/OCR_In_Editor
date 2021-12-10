@@ -10,6 +10,8 @@ from modules.data.loader import ICDARDataLoader
 from modules.trainer.trainer import Trainer
 from modules.models.metric import icdar_metric
 
+import wandb
+
 logging.basicConfig(level=logging.DEBUG, format='')
 
 
@@ -19,14 +21,20 @@ def main(config, resume):
     # load data
     train_dataloader = ICDARDataLoader(config).train()
     val_dataloader = ICDARDataLoader(config).val() if config['validation']['validation_split'] > 0 else None
+    print(type(train_dataloader))
 
     # initial model
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['gpus']])
     model = OCRModel(config)
     model.summary()
-
+    
+    wandb.init(
+        project='final_project',
+        name='with_new_backbone'
+    )
+    
     loss = E2ELoss()
-    trainer = Trainer(model, loss, icdar_metric, resume, config, train_dataloader, val_dataloader, train_logger)
+    trainer = Trainer(model, loss, icdar_metric, resume, config, train_dataloader, val_dataloader, train_logger, wandb)
     trainer.train()
 
 
@@ -36,7 +44,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MLT-OCR')
     parser.add_argument('-r', '--resume', default=None, type=str, help='path to latest checkpoint (default: None)')
     args = parser.parse_args()
-    config = json.load(open('config.json'))
+    config = json.load(open('config/back_config.json'))
     if args.resume:
         logger.warning('Warning: --config overridden by --resume')
 
