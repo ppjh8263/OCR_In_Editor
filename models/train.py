@@ -21,7 +21,6 @@ def main(config, resume):
     # load data
     train_dataloader = ICDARDataLoader(config).train()
     val_dataloader = ICDARDataLoader(config).val() if config['validation']['validation_split'] > 0 else None
-    print(type(train_dataloader))
 
     # initial model
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['gpus']])
@@ -30,7 +29,7 @@ def main(config, resume):
     
     wandb.init(
         project='final_project',
-        name='with_new_backbone'
+        name='asdf'
     )
     
     loss = E2ELoss()
@@ -44,7 +43,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MLT-OCR')
     parser.add_argument('-r', '--resume', default=None, type=str, help='path to latest checkpoint (default: None)')
     args = parser.parse_args()
-    config = json.load(open('config/back_config.json'))
+    config = json.load(open('config.json'))
     if args.resume:
         logger.warning('Warning: --config overridden by --resume')
 
