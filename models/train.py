@@ -2,6 +2,7 @@ import os
 import json
 import logging
 import argparse
+import wandb
 
 from modules.models.loss import E2ELoss
 from modules.models.model import OCRModel
@@ -24,9 +25,14 @@ def main(config, resume):
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['gpus']])
     model = OCRModel(config)
     model.summary()
-
+    wandb.init(
+        project='fots',
+        name='Shared_res50'
+    )
+    
+    wandb.log(config)
     loss = E2ELoss()
-    trainer = Trainer(model, loss, icdar_metric, resume, config, train_dataloader, val_dataloader, train_logger)
+    trainer = Trainer(model, loss, icdar_metric, resume, config, train_dataloader, val_dataloader, train_logger, wandb=wandb)
     trainer.train()
 
 

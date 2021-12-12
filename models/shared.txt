@@ -1,0 +1,2118 @@
+Trainable parameters: 30460352
+SharedConv(
+  (backbone): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (toplayer): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (toplayer_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (toplayer_relu): ReLU(inplace=True)
+    (smooth1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth1_relu): ReLU(inplace=True)
+    (smooth2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth2_relu): ReLU(inplace=True)
+    (smooth3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth3_relu): ReLU(inplace=True)
+    (latlayer1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer1_relu): ReLU(inplace=True)
+    (latlayer2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer2_relu): ReLU(inplace=True)
+    (latlayer3): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer3_relu): ReLU(inplace=True)
+    (conv2): Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace=True)
+  )
+  (mergeLayers0): DummyLayer()
+  (mergeLayers1): HLayer(
+    (conv2dOne): Conv2d(3072, 256, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers2): HLayer(
+    (conv2dOne): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers3): HLayer(
+    (conv2dOne): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers4): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+)
+Trainable parameters: 1542
+Detector(
+  (score_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+  (geo_map): Conv2d(256, 4, kernel_size=(1, 1), stride=(1, 1))
+  (angle_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Trainable parameters: 8548462
+Recognizer(
+  (crnn): CRNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu0): ReLU(inplace=True)
+      (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu1): ReLU(inplace=True)
+      (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU(inplace=True)
+      (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu3): ReLU(inplace=True)
+      (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu4): ReLU(inplace=True)
+      (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu5): ReLU(inplace=True)
+      (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+      (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu6): ReLU(inplace=True)
+    )
+    (rnn): Sequential(
+      (0): BidirectionalLSTM(
+        (rnn): LSTM(512, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): BidirectionalLSTM(
+        (rnn): LSTM(256, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=174, bias=True)
+      )
+    )
+  )
+)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=None)
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: ddeokbboki-good (use `wandb login --relogin` to force relogin)
+Popen(['git', 'cat-file', '--batch-check'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=<valid stream>)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run Shared_res50
+wandb:  View project at https://wandb.ai/ddeokbboki-good/fots
+wandb:  View run at https://wandb.ai/ddeokbboki-good/fots/runs/kdeu8ayu
+wandb: Run data is saved locally in /opt/ml/final-project-level3-cv-07/models/wandb/run-20211211_094012-kdeu8ayu
+wandb: Run `wandb offline` to turn off syncing.
+Model is initialized.
+Memory Usage: 
+    CUDA: 0  Allocated: 152.720703125 MB Cached: 168.0 MB 
+
+
+Total epochs: 1
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3289: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3226: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+Train Epoch: 1 [0/900 (0%)] Loss: 38.030861 IOU Loss: 0.005319 CLS Loss: 0.009987 Recognition Loss: 38.015556
+Train Epoch: 1 [100/900 (11%)] Loss: 11.907775 IOU Loss: 0.011210 CLS Loss: 0.009960 Recognition Loss: 11.886605
+Train Epoch: 1 [200/900 (22%)] Loss: 5.081132 IOU Loss: 0.011791 CLS Loss: 0.009948 Recognition Loss: 5.059393
+Train Epoch: 1 [300/900 (33%)] Loss: 4.753625 IOU Loss: 0.050191 CLS Loss: 0.009789 Recognition Loss: 4.693645
+Train Epoch: 1 [400/900 (44%)] Loss: 4.672881 IOU Loss: 0.025462 CLS Loss: 0.009796 Recognition Loss: 4.637623
+Train Epoch: 1 [500/900 (56%)] Loss: 4.415197 IOU Loss: 0.017112 CLS Loss: 0.009775 Recognition Loss: 4.388309
+Train Epoch: 1 [600/900 (67%)] Loss: 4.526064 IOU Loss: 0.026321 CLS Loss: 0.009733 Recognition Loss: 4.490011
+Train Epoch: 1 [700/900 (78%)] Loss: 4.675211 IOU Loss: 0.010930 CLS Loss: 0.009842 Recognition Loss: 4.654439
+Train Epoch: 1 [800/900 (89%)] Loss: 4.565227 IOU Loss: 0.001795 CLS Loss: 0.009979 Recognition Loss: 4.553452
+Running validation set ...
+pred_score_map is torch.Size([4, 1, 128, 128])
+pred_geo_map is torch.Size([4, 5, 128, 128])
+['img_205.jpg', 'img_212.jpg', 'img_270.jpg', 'img_695.jpg']
+Traceback (most recent call last):
+  File "train.py", line 49, in <module>
+    main(config, args.resume)
+  File "train.py", line 36, in main
+    trainer.train()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/base/base_trainer.py", line 84, in train
+    result = self._train_epoch(epoch)
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 128, in _train_epoch
+    val_log = self._valid_epoch()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 155, in _valid_epoch
+    print(f"pred_recog is {pred_recog.shape}")
+AttributeError: 'tuple' object has no attribute 'shape'
+wandb: Waiting for W&B process to finish, PID 63554... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Run history:
+wandb:         Class_Loss █▆█████▇▇██▅▇▅▇▁▇▆▆▇▅▇▅▇▇█▃▅▆▆██▄▃█▇▇▇█▄
+wandb:              Epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           IoU_Loss ▃▄▂▃▂▂▃▃▃▂▁▆▃█▃▅▃▄▄▂▄▃▃▂▂▁▄▃▄▂▁▁▄▅▁▁▁▂▁▃
+wandb:               Loss █▇█▇▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   Recognition_Loss █▇█▇▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               cuda ▁
+wandb:              debug ▁
+wandb: 
+wandb: Run summary:
+wandb:         Class_Loss 0.0099
+wandb:              Epoch 1
+wandb:           IoU_Loss 0.00743
+wandb:               Loss 4.01467
+wandb:   Recognition_Loss 3.99734
+wandb:               cuda True
+wandb:              debug False
+wandb:               name new
+wandb:     optimizer_type Adam
+wandb: 
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Synced Shared_res50: https://wandb.ai/ddeokbboki-good/fots/runs/kdeu8ayu
+wandb: Find logs at: ./wandb/run-20211211_094012-kdeu8ayu/logs/debug.log
+wandb: 
+
+Trainable parameters: 30460352
+SharedConv(
+  (backbone): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (toplayer): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (toplayer_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (toplayer_relu): ReLU(inplace=True)
+    (smooth1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth1_relu): ReLU(inplace=True)
+    (smooth2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth2_relu): ReLU(inplace=True)
+    (smooth3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth3_relu): ReLU(inplace=True)
+    (latlayer1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer1_relu): ReLU(inplace=True)
+    (latlayer2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer2_relu): ReLU(inplace=True)
+    (latlayer3): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer3_relu): ReLU(inplace=True)
+    (conv2): Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace=True)
+  )
+  (mergeLayers0): DummyLayer()
+  (mergeLayers1): HLayer(
+    (conv2dOne): Conv2d(3072, 256, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers2): HLayer(
+    (conv2dOne): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers3): HLayer(
+    (conv2dOne): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers4): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+)
+Trainable parameters: 1542
+Detector(
+  (score_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+  (geo_map): Conv2d(256, 4, kernel_size=(1, 1), stride=(1, 1))
+  (angle_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Trainable parameters: 8548462
+Recognizer(
+  (crnn): CRNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu0): ReLU(inplace=True)
+      (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu1): ReLU(inplace=True)
+      (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU(inplace=True)
+      (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu3): ReLU(inplace=True)
+      (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu4): ReLU(inplace=True)
+      (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu5): ReLU(inplace=True)
+      (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+      (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu6): ReLU(inplace=True)
+    )
+    (rnn): Sequential(
+      (0): BidirectionalLSTM(
+        (rnn): LSTM(512, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): BidirectionalLSTM(
+        (rnn): LSTM(256, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=174, bias=True)
+      )
+    )
+  )
+)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=None)
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: ddeokbboki-good (use `wandb login --relogin` to force relogin)
+Popen(['git', 'cat-file', '--batch-check'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=<valid stream>)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run Shared_res50
+wandb:  View project at https://wandb.ai/ddeokbboki-good/fots
+wandb:  View run at https://wandb.ai/ddeokbboki-good/fots/runs/2uoikwmz
+wandb: Run data is saved locally in /opt/ml/final-project-level3-cv-07/models/wandb/run-20211211_094418-2uoikwmz
+wandb: Run `wandb offline` to turn off syncing.
+Model is initialized.
+Memory Usage: 
+    CUDA: 0  Allocated: 152.720703125 MB Cached: 168.0 MB 
+
+
+Total epochs: 1
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3289: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3226: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+Train Epoch: 1 [0/900 (0%)] Loss: 29.165051 IOU Loss: 0.024637 CLS Loss: 0.009895 Recognition Loss: 29.130518
+Train Epoch: 1 [100/900 (11%)] Loss: 9.211448 IOU Loss: 0.012834 CLS Loss: 0.009951 Recognition Loss: 9.188663
+Train Epoch: 1 [200/900 (22%)] Loss: 5.085158 IOU Loss: 0.021269 CLS Loss: 0.009902 Recognition Loss: 5.053987
+Train Epoch: 1 [300/900 (33%)] Loss: 4.539219 IOU Loss: 0.028161 CLS Loss: 0.009839 Recognition Loss: 4.501218
+Train Epoch: 1 [400/900 (44%)] Loss: 4.820535 IOU Loss: 0.010103 CLS Loss: 0.009953 Recognition Loss: 4.800479
+Train Epoch: 1 [500/900 (56%)] Loss: 4.068547 IOU Loss: 0.009506 CLS Loss: 0.009912 Recognition Loss: 4.049129
+Train Epoch: 1 [600/900 (67%)] Loss: 3.905360 IOU Loss: 0.006222 CLS Loss: 0.009940 Recognition Loss: 3.889197
+Train Epoch: 1 [700/900 (78%)] Loss: 4.013628 IOU Loss: 0.004950 CLS Loss: 0.009929 Recognition Loss: 3.998750
+Train Epoch: 1 [800/900 (89%)] Loss: 4.082173 IOU Loss: 0.011848 CLS Loss: 0.009738 Recognition Loss: 4.060588
+/opt/ml/final-project-level3-cv-07/models/modules/data/utils.py:187: RuntimeWarning: invalid value encountered in double_scalars
+  return np.linalg.norm(np.cross(p2 - p1, p1 - p3)) / np.linalg.norm(p2 - p1)
+Cross point does not exist
+Cross point does not exist
+Running validation set ...
+pred_score_map is torch.Size([4, 1, 128, 128])
+pred_geo_map is torch.Size([4, 5, 128, 128])
+pred_recog is 2
+pred_boxes is 0
+['img_867.jpg', 'img_220.jpg', 'img_866.jpg', 'img_279.jpg']
+Traceback (most recent call last):
+  File "train.py", line 49, in <module>
+    main(config, args.resume)
+  File "train.py", line 36, in main
+    trainer.train()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/base/base_trainer.py", line 84, in train
+    result = self._train_epoch(epoch)
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 128, in _train_epoch
+    val_log = self._valid_epoch()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 157, in _valid_epoch
+    print(f"pred_mapping is {pred_mapping.shape}")
+AttributeError: 'list' object has no attribute 'shape'
+wandb: Waiting for W&B process to finish, PID 64641... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Run history:
+wandb:         Class_Loss ▆▇▄▆▇▇▇▇▆▇▇▆▆▄█▇▆▃▇▄▄▁▆▆▄▅▄▄▆▇▆▆▄▅█▆▆▃▇▇
+wandb:              Epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           IoU_Loss ▅▅▇▆▄▅▄▄▅▃▄▅▄▇▂▃▆▆▃▇▅█▃▃▅▄▃▄▃▂▃▃▄▃▁▂▂▃▂▁
+wandb:               Loss ▅▇█▅▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   Recognition_Loss ▅▇█▅▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               cuda ▁
+wandb:              debug ▁
+wandb: 
+wandb: Run summary:
+wandb:         Class_Loss 0.00975
+wandb:              Epoch 1
+wandb:           IoU_Loss 0.01332
+wandb:               Loss 4.25905
+wandb:   Recognition_Loss 4.23599
+wandb:               cuda True
+wandb:              debug False
+wandb:               name new
+wandb:     optimizer_type Adam
+wandb: 
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Synced Shared_res50: https://wandb.ai/ddeokbboki-good/fots/runs/2uoikwmz
+wandb: Find logs at: ./wandb/run-20211211_094418-2uoikwmz/logs/debug.log
+wandb: 
+
+Trainable parameters: 30460352
+SharedConv(
+  (backbone): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (toplayer): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (toplayer_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (toplayer_relu): ReLU(inplace=True)
+    (smooth1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth1_relu): ReLU(inplace=True)
+    (smooth2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth2_relu): ReLU(inplace=True)
+    (smooth3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth3_relu): ReLU(inplace=True)
+    (latlayer1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer1_relu): ReLU(inplace=True)
+    (latlayer2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer2_relu): ReLU(inplace=True)
+    (latlayer3): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer3_relu): ReLU(inplace=True)
+    (conv2): Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace=True)
+  )
+  (mergeLayers0): DummyLayer()
+  (mergeLayers1): HLayer(
+    (conv2dOne): Conv2d(3072, 256, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers2): HLayer(
+    (conv2dOne): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers3): HLayer(
+    (conv2dOne): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers4): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+)
+Trainable parameters: 1542
+Detector(
+  (score_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+  (geo_map): Conv2d(256, 4, kernel_size=(1, 1), stride=(1, 1))
+  (angle_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Trainable parameters: 8548462
+Recognizer(
+  (crnn): CRNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu0): ReLU(inplace=True)
+      (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu1): ReLU(inplace=True)
+      (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU(inplace=True)
+      (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu3): ReLU(inplace=True)
+      (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu4): ReLU(inplace=True)
+      (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu5): ReLU(inplace=True)
+      (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+      (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu6): ReLU(inplace=True)
+    )
+    (rnn): Sequential(
+      (0): BidirectionalLSTM(
+        (rnn): LSTM(512, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): BidirectionalLSTM(
+        (rnn): LSTM(256, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=174, bias=True)
+      )
+    )
+  )
+)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=None)
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: ddeokbboki-good (use `wandb login --relogin` to force relogin)
+Popen(['git', 'cat-file', '--batch-check'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=<valid stream>)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run Shared_res50
+wandb:  View project at https://wandb.ai/ddeokbboki-good/fots
+wandb:  View run at https://wandb.ai/ddeokbboki-good/fots/runs/1b26e6b0
+wandb: Run data is saved locally in /opt/ml/final-project-level3-cv-07/models/wandb/run-20211211_094738-1b26e6b0
+wandb: Run `wandb offline` to turn off syncing.
+Model is initialized.
+Memory Usage: 
+    CUDA: 0  Allocated: 152.720703125 MB Cached: 168.0 MB 
+
+
+Total epochs: 1
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3289: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3226: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+Train Epoch: 1 [0/900 (0%)] Loss: 28.274202 IOU Loss: 0.040454 CLS Loss: 0.009857 Recognition Loss: 28.223890
+Train Epoch: 1 [100/900 (11%)] Loss: 7.765465 IOU Loss: 0.007097 CLS Loss: 0.009979 Recognition Loss: 7.748390
+Train Epoch: 1 [200/900 (22%)] Loss: 4.905963 IOU Loss: 0.039848 CLS Loss: 0.009810 Recognition Loss: 4.856305
+Train Epoch: 1 [300/900 (33%)] Loss: 4.637638 IOU Loss: 0.029538 CLS Loss: 0.009865 Recognition Loss: 4.598234
+Train Epoch: 1 [400/900 (44%)] Loss: 4.156740 IOU Loss: 0.010844 CLS Loss: 0.009951 Recognition Loss: 4.135944
+Train Epoch: 1 [500/900 (56%)] Loss: 4.218588 IOU Loss: 0.015726 CLS Loss: 0.009900 Recognition Loss: 4.192962
+Train Epoch: 1 [600/900 (67%)] Loss: 4.180001 IOU Loss: 0.021584 CLS Loss: 0.009822 Recognition Loss: 4.148595
+Train Epoch: 1 [700/900 (78%)] Loss: 4.320663 IOU Loss: 0.011447 CLS Loss: 0.009896 Recognition Loss: 4.299320
+Train Epoch: 1 [800/900 (89%)] Loss: 4.447845 IOU Loss: 0.004653 CLS Loss: 0.009951 Recognition Loss: 4.433241
+Running validation set ...
+pred_score_map is torch.Size([4, 1, 128, 128])
+pred_geo_map is torch.Size([4, 5, 128, 128])
+pred_recog is 2
+pred_boxes is 0
+pred_mapping is 0
+['img_913.jpg', 'img_519.jpg', 'img_695.jpg', 'img_176.jpg']
+Traceback (most recent call last):
+  File "train.py", line 49, in <module>
+    main(config, args.resume)
+  File "train.py", line 36, in main
+    trainer.train()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/base/base_trainer.py", line 84, in train
+    result = self._train_epoch(epoch)
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 128, in _train_epoch
+    val_log = self._valid_epoch()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 158, in _valid_epoch
+    print(f"rois is {rois.shape}")
+AttributeError: 'NoneType' object has no attribute 'shape'
+wandb: Waiting for W&B process to finish, PID 65574... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Run history:
+wandb:         Class_Loss ▂▇▆█▇█▆▅▆▇▆▇▄▅▆█▇▄▇▆▇▆▆▅██▄▇▃█▄▁▃▆▂▃▇█▄▆
+wandb:              Epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           IoU_Loss █▄▃▂▃▂▃▆▄▃▄▃▄▄▃▂▃▆▂▃▃▃▃▃▁▁▂▂▃▁▃▃▂▁▃▃▁▁▂▁
+wandb:               Loss █▇▇▄▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   Recognition_Loss █▇▇▄▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               cuda ▁
+wandb:              debug ▁
+wandb: 
+wandb: Run summary:
+wandb:         Class_Loss 0.00993
+wandb:              Epoch 1
+wandb:           IoU_Loss 0.00333
+wandb:               Loss 4.19726
+wandb:   Recognition_Loss 4.184
+wandb:               cuda True
+wandb:              debug False
+wandb:               name new
+wandb:     optimizer_type Adam
+wandb: 
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Synced Shared_res50: https://wandb.ai/ddeokbboki-good/fots/runs/1b26e6b0
+wandb: Find logs at: ./wandb/run-20211211_094738-1b26e6b0/logs/debug.log
+wandb: 
+
+Trainable parameters: 30460352
+SharedConv(
+  (backbone): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (toplayer): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (toplayer_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (toplayer_relu): ReLU(inplace=True)
+    (smooth1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth1_relu): ReLU(inplace=True)
+    (smooth2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth2_relu): ReLU(inplace=True)
+    (smooth3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth3_relu): ReLU(inplace=True)
+    (latlayer1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer1_relu): ReLU(inplace=True)
+    (latlayer2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer2_relu): ReLU(inplace=True)
+    (latlayer3): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer3_relu): ReLU(inplace=True)
+    (conv2): Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace=True)
+  )
+  (mergeLayers0): DummyLayer()
+  (mergeLayers1): HLayer(
+    (conv2dOne): Conv2d(3072, 256, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers2): HLayer(
+    (conv2dOne): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers3): HLayer(
+    (conv2dOne): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers4): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+)
+Trainable parameters: 1542
+Detector(
+  (score_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+  (geo_map): Conv2d(256, 4, kernel_size=(1, 1), stride=(1, 1))
+  (angle_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Trainable parameters: 8548462
+Recognizer(
+  (crnn): CRNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu0): ReLU(inplace=True)
+      (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu1): ReLU(inplace=True)
+      (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU(inplace=True)
+      (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu3): ReLU(inplace=True)
+      (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu4): ReLU(inplace=True)
+      (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu5): ReLU(inplace=True)
+      (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+      (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu6): ReLU(inplace=True)
+    )
+    (rnn): Sequential(
+      (0): BidirectionalLSTM(
+        (rnn): LSTM(512, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): BidirectionalLSTM(
+        (rnn): LSTM(256, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=174, bias=True)
+      )
+    )
+  )
+)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=None)
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: ddeokbboki-good (use `wandb login --relogin` to force relogin)
+Popen(['git', 'cat-file', '--batch-check'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=<valid stream>)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run Shared_res50
+wandb:  View project at https://wandb.ai/ddeokbboki-good/fots
+wandb:  View run at https://wandb.ai/ddeokbboki-good/fots/runs/g1adrom9
+wandb: Run data is saved locally in /opt/ml/final-project-level3-cv-07/models/wandb/run-20211211_095416-g1adrom9
+wandb: Run `wandb offline` to turn off syncing.
+Model is initialized.
+Memory Usage: 
+    CUDA: 0  Allocated: 152.720703125 MB Cached: 168.0 MB 
+
+
+Total epochs: 1
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3289: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3226: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+Train Epoch: 1 [0/900 (0%)] Loss: 31.994816 IOU Loss: 0.024712 CLS Loss: 0.009919 Recognition Loss: 31.960184
+Train Epoch: 1 [100/900 (11%)] Loss: 6.929530 IOU Loss: 0.011379 CLS Loss: 0.009954 Recognition Loss: 6.908197
+Train Epoch: 1 [200/900 (22%)] Loss: 4.844073 IOU Loss: 0.023731 CLS Loss: 0.009915 Recognition Loss: 4.810427
+Train Epoch: 1 [300/900 (33%)] Loss: 4.433439 IOU Loss: 0.021072 CLS Loss: 0.009909 Recognition Loss: 4.402459
+Train Epoch: 1 [400/900 (44%)] Loss: 4.319598 IOU Loss: 0.014062 CLS Loss: 0.009890 Recognition Loss: 4.295646
+Train Epoch: 1 [500/900 (56%)] Loss: 4.276678 IOU Loss: 0.011665 CLS Loss: 0.009863 Recognition Loss: 4.255149
+Train Epoch: 1 [600/900 (67%)] Loss: 4.498482 IOU Loss: 0.008865 CLS Loss: 0.009877 Recognition Loss: 4.479740
+Train Epoch: 1 [700/900 (78%)] Loss: 4.167986 IOU Loss: 0.009729 CLS Loss: 0.009836 Recognition Loss: 4.148421
+Train Epoch: 1 [800/900 (89%)] Loss: 4.442702 IOU Loss: 0.013653 CLS Loss: 0.009731 Recognition Loss: 4.419318
+/opt/ml/final-project-level3-cv-07/models/modules/data/utils.py:187: RuntimeWarning: invalid value encountered in double_scalars
+  return np.linalg.norm(np.cross(p2 - p1, p1 - p3)) / np.linalg.norm(p2 - p1)
+Running validation set ...
+pred_score_map is torch.Size([4, 1, 128, 128])
+pred_geo_map is torch.Size([4, 5, 128, 128])
+pred_recog is 2
+pred_boxes is 0
+pred_mapping is 0
+rois is None
+pred_recog2 is (None, None)
+training_mask is tensor([[[[1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          ...,
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.]]],
+
+
+        [[[1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          ...,
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.]]],
+
+
+        [[[1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          ...,
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.]]],
+
+
+        [[[1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          ...,
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.],
+          [1., 1., 1.,  ..., 1., 1., 1.]]]], device='cuda:0')
+['img_372.jpg', 'img_699.jpg', 'img_24.jpg', 'img_944.jpg']
+Traceback (most recent call last):
+  File "train.py", line 49, in <module>
+    main(config, args.resume)
+  File "train.py", line 36, in main
+    trainer.train()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/base/base_trainer.py", line 84, in train
+    result = self._train_epoch(epoch)
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 128, in _train_epoch
+    val_log = self._valid_epoch()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 162, in _valid_epoch
+    rois, pred_recog, training_mask)
+  File "/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+TypeError: forward() takes 8 positional arguments but 9 were given
+wandb: Waiting for W&B process to finish, PID 66868... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Run history:
+wandb:         Class_Loss ▆▇▆▇▆█▅▆▇▆▇▆▇▇▅▄█▆▅▆▆▆▆▇▅▆▆▆▇▅▆█▇▆▆▁▄▄▅▇
+wandb:              Epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           IoU_Loss ▇▅▆▅▇▁▇▅▄▅▃▅▃▄▄█▁▃▄▃▂▂▃▂▂▃▂▃▂▃▂▁▁▂▂█▃▃▂▁
+wandb:               Loss ██▇▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   Recognition_Loss ██▇▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               cuda ▁
+wandb:              debug ▁
+wandb: 
+wandb: Run summary:
+wandb:         Class_Loss 0.00992
+wandb:              Epoch 1
+wandb:           IoU_Loss 0.00474
+wandb:               Loss 3.8861
+wandb:   Recognition_Loss 3.87143
+wandb:               cuda True
+wandb:              debug False
+wandb:               name new
+wandb:     optimizer_type Adam
+wandb: 
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Synced Shared_res50: https://wandb.ai/ddeokbboki-good/fots/runs/g1adrom9
+wandb: Find logs at: ./wandb/run-20211211_095416-g1adrom9/logs/debug.log
+wandb: 
+
+Trainable parameters: 30460352
+SharedConv(
+  (backbone): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (toplayer): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (toplayer_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (toplayer_relu): ReLU(inplace=True)
+    (smooth1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth1_relu): ReLU(inplace=True)
+    (smooth2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth2_relu): ReLU(inplace=True)
+    (smooth3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth3_relu): ReLU(inplace=True)
+    (latlayer1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer1_relu): ReLU(inplace=True)
+    (latlayer2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer2_relu): ReLU(inplace=True)
+    (latlayer3): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer3_relu): ReLU(inplace=True)
+    (conv2): Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace=True)
+  )
+  (mergeLayers0): DummyLayer()
+  (mergeLayers1): HLayer(
+    (conv2dOne): Conv2d(3072, 256, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers2): HLayer(
+    (conv2dOne): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers3): HLayer(
+    (conv2dOne): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers4): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+)
+Trainable parameters: 1542
+Detector(
+  (score_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+  (geo_map): Conv2d(256, 4, kernel_size=(1, 1), stride=(1, 1))
+  (angle_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Trainable parameters: 8548462
+Recognizer(
+  (crnn): CRNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu0): ReLU(inplace=True)
+      (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu1): ReLU(inplace=True)
+      (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU(inplace=True)
+      (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu3): ReLU(inplace=True)
+      (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu4): ReLU(inplace=True)
+      (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu5): ReLU(inplace=True)
+      (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+      (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu6): ReLU(inplace=True)
+    )
+    (rnn): Sequential(
+      (0): BidirectionalLSTM(
+        (rnn): LSTM(512, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): BidirectionalLSTM(
+        (rnn): LSTM(256, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=174, bias=True)
+      )
+    )
+  )
+)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=None)
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: ddeokbboki-good (use `wandb login --relogin` to force relogin)
+Popen(['git', 'cat-file', '--batch-check'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=<valid stream>)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run Shared_res50
+wandb:  View project at https://wandb.ai/ddeokbboki-good/fots
+wandb:  View run at https://wandb.ai/ddeokbboki-good/fots/runs/2u7flq7n
+wandb: Run data is saved locally in /opt/ml/final-project-level3-cv-07/models/wandb/run-20211211_095725-2u7flq7n
+wandb: Run `wandb offline` to turn off syncing.
+Model is initialized.
+Memory Usage: 
+    CUDA: 0  Allocated: 152.720703125 MB Cached: 168.0 MB 
+
+
+Total epochs: 1
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3289: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3226: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+Train Epoch: 1 [0/900 (0%)] Loss: 29.058292 IOU Loss: 0.020793 CLS Loss: 0.009928 Recognition Loss: 29.027573
+Train Epoch: 1 [100/900 (11%)] Loss: 9.466081 IOU Loss: 0.017432 CLS Loss: 0.009933 Recognition Loss: 9.438716
+Train Epoch: 1 [200/900 (22%)] Loss: 4.658816 IOU Loss: 0.005943 CLS Loss: 0.009976 Recognition Loss: 4.642897
+Train Epoch: 1 [300/900 (33%)] Loss: 4.596056 IOU Loss: 0.009715 CLS Loss: 0.009958 Recognition Loss: 4.576383
+Train Epoch: 1 [400/900 (44%)] Loss: 4.683390 IOU Loss: 0.027414 CLS Loss: 0.009834 Recognition Loss: 4.646142
+Train Epoch: 1 [500/900 (56%)] Loss: 4.211550 IOU Loss: 0.021762 CLS Loss: 0.009851 Recognition Loss: 4.179936
+Train Epoch: 1 [600/900 (67%)] Loss: 4.188422 IOU Loss: 0.006601 CLS Loss: 0.009922 Recognition Loss: 4.171899
+Train Epoch: 1 [700/900 (78%)] Loss: 4.386734 IOU Loss: 0.012168 CLS Loss: 0.009886 Recognition Loss: 4.364680
+Train Epoch: 1 [800/900 (89%)] Loss: 4.563994 IOU Loss: 0.009601 CLS Loss: 0.009872 Recognition Loss: 4.544521
+/opt/ml/final-project-level3-cv-07/models/modules/data/utils.py:187: RuntimeWarning: invalid value encountered in double_scalars
+  return np.linalg.norm(np.cross(p2 - p1, p1 - p3)) / np.linalg.norm(p2 - p1)
+/opt/ml/final-project-level3-cv-07/models/modules/data/utils.py:187: RuntimeWarning: invalid value encountered in double_scalars
+  return np.linalg.norm(np.cross(p2 - p1, p1 - p3)) / np.linalg.norm(p2 - p1)
+Running validation set ...
+pred_score_map is torch.Size([4, 1, 128, 128])
+pred_geo_map is torch.Size([4, 5, 128, 128])
+pred_recog is 2
+pred_boxes is 0
+pred_mapping is 0
+rois is None
+pred_recog2 is (None, None)
+training_mask is torch.Size([4, 1, 128, 128])
+['img_554.jpg', 'img_620.jpg', 'img_153.jpg', 'img_248.jpg']
+Traceback (most recent call last):
+  File "train.py", line 49, in <module>
+    main(config, args.resume)
+  File "train.py", line 36, in main
+    trainer.train()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/base/base_trainer.py", line 84, in train
+    result = self._train_epoch(epoch)
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 128, in _train_epoch
+    val_log = self._valid_epoch()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 162, in _valid_epoch
+    rois, pred_recog, training_mask)
+  File "/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+TypeError: forward() takes 8 positional arguments but 9 were given
+wandb: Waiting for W&B process to finish, PID 67834... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Run history:
+wandb:         Class_Loss ▇▆▅▇▇▆▇▇▇▇▄█▄▇▆▆█▇▃▄▄▇▄▅▇▅▁▇▃█▂▃▆█▆▆▂█▅▇
+wandb:              Epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           IoU_Loss ▃▄▅▃▃▄▃▃▃▃▅▂▇▃▃▄▂▂▇█▄▂▅▃▂▃▆▂▅▁▄▅▂▁▂▂▄▁▂▁
+wandb:               Loss ▆██▆▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   Recognition_Loss ▆██▆▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               cuda ▁
+wandb:              debug ▁
+wandb: 
+wandb: Run summary:
+wandb:         Class_Loss 0.00978
+wandb:              Epoch 1
+wandb:           IoU_Loss 0.01126
+wandb:               Loss 4.2955
+wandb:   Recognition_Loss 4.27445
+wandb:               cuda True
+wandb:              debug False
+wandb:               name new
+wandb:     optimizer_type Adam
+wandb: 
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Synced Shared_res50: https://wandb.ai/ddeokbboki-good/fots/runs/2u7flq7n
+wandb: Find logs at: ./wandb/run-20211211_095725-2u7flq7n/logs/debug.log
+wandb: 
+
+Trainable parameters: 30460352
+SharedConv(
+  (backbone): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (toplayer): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (toplayer_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (toplayer_relu): ReLU(inplace=True)
+    (smooth1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth1_relu): ReLU(inplace=True)
+    (smooth2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth2_relu): ReLU(inplace=True)
+    (smooth3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (smooth3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (smooth3_relu): ReLU(inplace=True)
+    (latlayer1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer1_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer1_relu): ReLU(inplace=True)
+    (latlayer2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer2_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer2_relu): ReLU(inplace=True)
+    (latlayer3): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (latlayer3_bn): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (latlayer3_relu): ReLU(inplace=True)
+    (conv2): Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace=True)
+  )
+  (mergeLayers0): DummyLayer()
+  (mergeLayers1): HLayer(
+    (conv2dOne): Conv2d(3072, 256, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers2): HLayer(
+    (conv2dOne): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(128, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers3): HLayer(
+    (conv2dOne): Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1))
+    (bnOne): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+    (conv2dTwo): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bnTwo): BatchNorm2d(64, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+  )
+  (mergeLayers4): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.003, affine=True, track_running_stats=True)
+)
+Trainable parameters: 1542
+Detector(
+  (score_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+  (geo_map): Conv2d(256, 4, kernel_size=(1, 1), stride=(1, 1))
+  (angle_map): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Trainable parameters: 8548462
+Recognizer(
+  (crnn): CRNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu0): ReLU(inplace=True)
+      (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu1): ReLU(inplace=True)
+      (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU(inplace=True)
+      (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu3): ReLU(inplace=True)
+      (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu4): ReLU(inplace=True)
+      (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu5): ReLU(inplace=True)
+      (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+      (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+      (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu6): ReLU(inplace=True)
+    )
+    (rnn): Sequential(
+      (0): BidirectionalLSTM(
+        (rnn): LSTM(512, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): BidirectionalLSTM(
+        (rnn): LSTM(256, 256, bidirectional=True)
+        (embedding): Linear(in_features=512, out_features=174, bias=True)
+      )
+    )
+  )
+)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=None)
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+Starting new HTTPS connection (1): api.wandb.ai:443
+https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: ddeokbboki-good (use `wandb login --relogin` to force relogin)
+Popen(['git', 'cat-file', '--batch-check'], cwd=/opt/ml/final-project-level3-cv-07, universal_newlines=False, shell=None, istream=<valid stream>)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run Shared_res50
+wandb:  View project at https://wandb.ai/ddeokbboki-good/fots
+wandb:  View run at https://wandb.ai/ddeokbboki-good/fots/runs/2wyagznw
+wandb: Run data is saved locally in /opt/ml/final-project-level3-cv-07/models/wandb/run-20211211_100239-2wyagznw
+wandb: Run `wandb offline` to turn off syncing.
+Model is initialized.
+Memory Usage: 
+    CUDA: 0  Allocated: 152.720703125 MB Cached: 168.0 MB 
+
+
+Total epochs: 1
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3289: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/functional.py:3226: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn("Default grid_sample and affine_grid behavior has changed "
+Train Epoch: 1 [0/900 (0%)] Loss: 33.393707 IOU Loss: 0.010810 CLS Loss: 0.009962 Recognition Loss: 33.372936
+Train Epoch: 1 [100/900 (11%)] Loss: 18.300703 IOU Loss: 0.067258 CLS Loss: 0.009684 Recognition Loss: 18.223761
+Train Epoch: 1 [200/900 (22%)] Loss: 5.041490 IOU Loss: 0.000985 CLS Loss: 0.009996 Recognition Loss: 5.030509
+Train Epoch: 1 [300/900 (33%)] Loss: 4.542781 IOU Loss: 0.008495 CLS Loss: 0.009958 Recognition Loss: 4.524328
+Train Epoch: 1 [400/900 (44%)] Loss: 4.527648 IOU Loss: 0.019870 CLS Loss: 0.009799 Recognition Loss: 4.497979
+Train Epoch: 1 [500/900 (56%)] Loss: 4.405441 IOU Loss: 0.015961 CLS Loss: 0.009833 Recognition Loss: 4.379647
+Train Epoch: 1 [600/900 (67%)] Loss: 4.285308 IOU Loss: 0.014421 CLS Loss: 0.009857 Recognition Loss: 4.261031
+Train Epoch: 1 [700/900 (78%)] Loss: 4.595700 IOU Loss: 0.008331 CLS Loss: 0.009919 Recognition Loss: 4.577450
+Train Epoch: 1 [800/900 (89%)] Loss: 4.214852 IOU Loss: 0.014416 CLS Loss: 0.009761 Recognition Loss: 4.190676
+Running validation set ...
+pred_score_map is torch.Size([4, 1, 128, 128])
+pred_geo_map is torch.Size([4, 5, 128, 128])
+pred_recog is (None, None)
+pred_boxes is 0
+pred_mapping is 0
+rois is None
+pred_recog2 is (None, None)
+training_mask is torch.Size([4, 1, 128, 128])
+['img_597.jpg', 'img_673.jpg', 'img_862.jpg', 'img_28.jpg']
+Traceback (most recent call last):
+  File "train.py", line 49, in <module>
+    main(config, args.resume)
+  File "train.py", line 36, in main
+    trainer.train()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/base/base_trainer.py", line 84, in train
+    result = self._train_epoch(epoch)
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 128, in _train_epoch
+    val_log = self._valid_epoch()
+  File "/opt/ml/final-project-level3-cv-07/models/modules/trainer/trainer.py", line 162, in _valid_epoch
+    rois, pred_recog, training_mask)
+  File "/opt/conda/envs/lightweight/lib/python3.7/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+TypeError: forward() takes 8 positional arguments but 9 were given
+wandb: Waiting for W&B process to finish, PID 69007... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: \ 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: | 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: / 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb: - 0.02MB of 0.02MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Run history:
+wandb:         Class_Loss ███▇▇█▅▇▇▇▇███▇█▅▅▅▆▇█▆▆▇▇▇▅▁▇▇█▇█▇▅▆▇▆▃
+wandb:              Epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           IoU_Loss ▂▂▃▄▄▂█▅▃▃▃▂▂▂▃▂█▆▂▃▃▂▃▂▂▂▁▃█▂▁▁▂▁▁▄▂▂▂▄
+wandb:               Loss ▇▆█▆▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   Recognition_Loss ▇▆█▆▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:               cuda ▁
+wandb:              debug ▁
+wandb: 
+wandb: Run summary:
+wandb:         Class_Loss 0.00949
+wandb:              Epoch 1
+wandb:           IoU_Loss 0.04135
+wandb:               Loss 4.17896
+wandb:   Recognition_Loss 4.12812
+wandb:               cuda True
+wandb:              debug False
+wandb:               name new
+wandb:     optimizer_type Adam
+wandb: 
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Synced Shared_res50: https://wandb.ai/ddeokbboki-good/fots/runs/2wyagznw
+wandb: Find logs at: ./wandb/run-20211211_100239-2wyagznw/logs/debug.log
+wandb: 
+

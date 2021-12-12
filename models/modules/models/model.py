@@ -6,7 +6,8 @@ import torch.optim as optim
 
 from modules.base.base_model import BaseModel
 from modules.models.core.crnn import CRNN
-from modules.models.core.fpn_resnet import ResNetBackbone
+from modules.models.core.sharedconv import SharedConv
+from modules.models.core.fpn_resnet import ResNetBackbone, resnet50
 from modules.utils.converter import keys
 from modules.utils.util import detect
 from modules.utils.roi import batch_roi_transform
@@ -16,8 +17,10 @@ class OCRModel:
 
     def __init__(self, config):
         num_class = len(keys) + 1
+        # self.backbone = ResNetBackbone(config)
+        bbNet = resnet50(pretrained=True)
+        self.backbone = SharedConv(bbNet, config)
         backbone_channel_out = 256
-        self.backbone = ResNetBackbone(config)
         self.detector = Detector(config, backbone_channel_out)
         self.recognizer = Recognizer(num_class, config)
 
@@ -86,12 +89,13 @@ class OCRModel:
             device = image.get_device()
         else:
             device = torch.device('cpu')
-
+        
         feature_map = self.backbone.forward(image)
+        # print(f"feature_map shape is {feature_map.shape}")
         score_map, geo_map = self.detector(feature_map)
 
         if self.training:
-            rois = batch_roi_transform(image, boxes[:, :8], mapping)
+            rois = batch_roi_transform(feature_map, boxes[:, :8], mapping)
             pred_mapping = mapping
             pred_boxes = boxes
         else:
@@ -115,7 +119,7 @@ class OCRModel:
             if len(pred_mapping) > 0:
                 pred_boxes = np.concatenate(pred_boxes)
                 pred_mapping = np.concatenate(pred_mapping)
-                rois = batch_roi_transform(image, pred_boxes[:, :8], pred_mapping)
+                rois = batch_roi_transform(feature_map, pred_boxes[:, :8], pred_mapping)
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
@@ -129,7 +133,7 @@ class Recognizer(BaseModel):
 
     def __init__(self, nclass, config):
         super().__init__(config)
-        self.crnn = CRNN(32, 1, nclass, 256)
+        self.crnn = CRNN(32, 256, nclass, 256)
         # self.crnn.register_backward_hook(self.crnn.backward_hook)
 
     def forward(self, rois):

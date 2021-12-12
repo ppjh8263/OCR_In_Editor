@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+import wandb
 
 from modules.utils.converter import keys
 from modules.base.base_trainer import BaseTrainer
@@ -15,7 +16,7 @@ class Trainer(BaseTrainer):
         self.optimizer is by default handled by BaseTrainer based on config.
     """
 
-    def __init__(self, model, loss, metrics, resume, config, data_loader, valid_data_loader=None, train_logger=None):
+    def __init__(self, model, loss, metrics, resume, config, data_loader, valid_data_loader=None, train_logger=None, wandb=None):
         super(Trainer, self).__init__(model, loss, metrics, resume, config, train_logger)
         self.config = config
         self.batch_size = data_loader.batch_size
@@ -25,6 +26,7 @@ class Trainer(BaseTrainer):
         self.log_step = config['trainer']['print_step']
         self.skip_val_lt_epoch = config['validation']['skip_lt_epoch']
         self.label_converter = StringLabelConverter(keys)
+        self.wandb = wandb
 
     def _to_tensor(self, *tensors):
         t = []
@@ -100,16 +102,24 @@ class Trainer(BaseTrainer):
                             len(self.data_loader) * self.data_loader.batch_size,
                             100.0 * batch_idx / len(self.data_loader),
                             loss.item(), iou_loss.item(), cls_loss.item(), reg_loss.item()))
+                
+                self.wandb.log({
+                    "Epoch" : epoch,
+                    "Loss": loss.item(),
+                    "IoU_Loss": iou_loss,
+                    "Class_Loss": cls_loss,
+                    "Recognition_Loss": reg_loss
+                })
 
             except Exception:
                 print(image_paths)
                 raise
-
+    
         log = {
-            'loss': total_loss / len(self.data_loader),
-            'precious': total_metrics[0] / len(self.data_loader),
-            'recall': total_metrics[1] / len(self.data_loader),
-            'hmean': total_metrics[2] / len(self.data_loader)
+            'Train/loss': total_loss / len(self.data_loader),
+            'Train/precious': total_metrics[0] / len(self.data_loader),
+            'Train/recall': total_metrics[1] / len(self.data_loader),
+            'Train/hmean': total_metrics[2] / len(self.data_loader)
         }
 
         # skip validation at the beginning to speedup training process
@@ -131,6 +141,7 @@ class Trainer(BaseTrainer):
         """
         self.model.eval()
         total_val_metrics = np.zeros(3)
+        total_val_loss = 0
         with torch.no_grad():
             for batch_idx, gt in enumerate(self.valid_data_loader):
                 try:
@@ -139,6 +150,19 @@ class Trainer(BaseTrainer):
 
                     pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, rois = self.model.forward(
                         img, boxes, mapping)
+                    print(f"pred_score_map is {pred_score_map.shape}")
+                    print(f"pred_geo_map is {pred_geo_map.shape}") 
+                    print(f"pred_recog is {pred_recog}")
+                    print(f"pred_boxes is {len(pred_boxes)}")
+                    print(f"pred_mapping is {len(pred_mapping)}")
+                    print(f"rois is {rois}")
+                    print(f"pred_recog2 is {pred_recog}")
+                    print(f"training_mask is {training_mask.shape}")
+                    v_iou_loss, v_cls_loss, v_reg_loss = self.loss(pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, 
+                                                            rois, pred_recog, training_mask)
+                    val_loss = v_iou_loss + v_cls_loss + v_reg_loss
+
+                    total_val_loss += val_loss.item()
                     pred_transcripts = []
                     pred_fns = []
                     if len(pred_mapping) > 0:
@@ -161,12 +185,21 @@ class Trainer(BaseTrainer):
                                 len(self.valid_data_loader) * self.valid_data_loader.batch_size,
                                 100.0 * batch_idx / len(self.valid_data_loader)))
 
+                    self.wandb.log({
+                    "Loss": val_loss.item(),
+                    "IoU_Loss": v_iou_loss,
+                    "Class_Loss": v_cls_loss,
+                    "Recognition_Loss": v_reg_loss
+                })
+
                 except Exception:
                     print(imagePaths)
                     raise
+        
+        
 
         return {
-            'val_precious': total_val_metrics[0] / len(self.valid_data_loader),
-            'val_recall': total_val_metrics[1] / len(self.valid_data_loader),
-            'val_hmean': total_val_metrics[2] / len(self.valid_data_loader)
+            'Val/precious': total_val_metrics[0] / len(self.valid_data_loader),
+            'Val/recall': total_val_metrics[1] / len(self.valid_data_loader),
+            'Val/hmean': total_val_metrics[2] / len(self.valid_data_loader)
         }

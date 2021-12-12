@@ -40,10 +40,9 @@ def roi_transform(feature, box, size=(32, 180)):
     feature_rotated = feature_rotated[:, :, 0:resize_h, 0:resize_w]
 
     feature_rotated = feature_rotated.squeeze(0)
-    gray_scale_img = rgb_to_grayscale(feature_rotated).unsqueeze(0)
+    # gray_scale_img = rgb_to_grayscale(feature_rotated).unsqueeze(0)
 
-    return gray_scale_img
-
+    return feature_rotated
 
 def param2theta(param, w, h):
     param = np.vstack([param, [0, 0, 1]])
