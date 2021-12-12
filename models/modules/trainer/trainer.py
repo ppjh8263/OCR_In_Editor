@@ -111,6 +111,14 @@ class Trainer(BaseTrainer):
                     "Recognition_Loss": reg_loss
                 })
 
+                    self.wandb.log({
+                        "train/Epoch" : epoch,
+                        "train/Loss" : loss.item(),
+                        "train/IOU Loss": iou_loss.item(),
+                        "train/CLS Loss" : cls_loss.item(),
+                        "Recognition Loss" : reg_loss.item()
+                        })
+
             except Exception:
                 print(image_paths)
                 raise
@@ -122,11 +130,15 @@ class Trainer(BaseTrainer):
             'Train/hmean': total_metrics[2] / len(self.data_loader)
         }
 
+
         # skip validation at the beginning to speedup training process
         if self.valid and self.skip_val_lt_epoch < epoch:
             print('Running validation set ...')
             val_log = self._valid_epoch()
             log = {**log, **val_log}
+        
+        log['epoch'] = epoch
+        self.wandb.log(log)
 
         return log
 
@@ -195,6 +207,7 @@ class Trainer(BaseTrainer):
                 except Exception:
                     print(imagePaths)
                     raise
+<<<<<<< HEAD
         
         
 
@@ -203,3 +216,12 @@ class Trainer(BaseTrainer):
             'Val/recall': total_val_metrics[1] / len(self.valid_data_loader),
             'Val/hmean': total_val_metrics[2] / len(self.valid_data_loader)
         }
+=======
+                    
+
+        return {
+            'val/precious': total_val_metrics[0] / len(self.valid_data_loader),
+            'val/recall': total_val_metrics[1] / len(self.valid_data_loader),
+            'val/hmean': total_val_metrics[2] / len(self.valid_data_loader)
+        }
+>>>>>>> 96939bd6414909256d36a8641d4ab33ec1cfea7f

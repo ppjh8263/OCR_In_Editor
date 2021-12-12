@@ -1,2 +1,10 @@
 libopenshot/
 libopenshot-audio/
+
+*.jpg
+wandb
+
+datasets
+runs
+*.pyc
+.ipynb_checkpoints
