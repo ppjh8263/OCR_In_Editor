@@ -11,10 +11,6 @@ importlib-metadata==1.6.0
 Markdown==3.2.2
 numpy==1.21.4
 oauthlib==3.1.0
-<<<<<<< HEAD
-=======
-
->>>>>>> 96939bd6414909256d36a8641d4ab33ec1cfea7f
 Pillow==7.1.2
 Polygon3==3.0.8
 protobuf==3.12.1

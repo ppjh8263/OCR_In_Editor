@@ -103,21 +103,13 @@ class Trainer(BaseTrainer):
                             100.0 * batch_idx / len(self.data_loader),
                             loss.item(), iou_loss.item(), cls_loss.item(), reg_loss.item()))
                 
-                self.wandb.log({
-                    "Epoch" : epoch,
-                    "Loss": loss.item(),
-                    "IoU_Loss": iou_loss,
-                    "Class_Loss": cls_loss,
-                    "Recognition_Loss": reg_loss
-                })
-
                     self.wandb.log({
-                        "train/Epoch" : epoch,
-                        "train/Loss" : loss.item(),
-                        "train/IOU Loss": iou_loss.item(),
-                        "train/CLS Loss" : cls_loss.item(),
-                        "Recognition Loss" : reg_loss.item()
-                        })
+                        "Epoch" : epoch,
+                        "Loss": loss.item(),
+                        "IoU_Loss": iou_loss.item(),
+                        "Class_Loss": cls_loss.item(),
+                        "Recognition_Loss": reg_loss.item()
+                    })
 
             except Exception:
                 print(image_paths)
@@ -162,14 +154,14 @@ class Trainer(BaseTrainer):
 
                     pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, rois = self.model.forward(
                         img, boxes, mapping)
-                    print(f"pred_score_map is {pred_score_map.shape}")
-                    print(f"pred_geo_map is {pred_geo_map.shape}") 
-                    print(f"pred_recog is {pred_recog}")
-                    print(f"pred_boxes is {len(pred_boxes)}")
-                    print(f"pred_mapping is {len(pred_mapping)}")
-                    print(f"rois is {rois}")
-                    print(f"pred_recog2 is {pred_recog}")
-                    print(f"training_mask is {training_mask.shape}")
+                    # print(f"pred_score_map is {pred_score_map.shape}")
+                    # print(f"pred_geo_map is {pred_geo_map.shape}") 
+                    # print(f"pred_recog is {pred_recog}")
+                    # print(f"pred_boxes is {len(pred_boxes)}")
+                    # print(f"pred_mapping is {len(pred_mapping)}")
+                    # print(f"rois is {rois}")
+                    # print(f"pred_recog2 is {pred_recog}")
+                    # print(f"training_mask is {training_mask.shape}")
                     v_iou_loss, v_cls_loss, v_reg_loss = self.loss(pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, 
                                                             rois, pred_recog, training_mask)
                     val_loss = v_iou_loss + v_cls_loss + v_reg_loss
@@ -207,16 +199,6 @@ class Trainer(BaseTrainer):
                 except Exception:
                     print(imagePaths)
                     raise
-<<<<<<< HEAD
-        
-        
-
-        return {
-            'Val/precious': total_val_metrics[0] / len(self.valid_data_loader),
-            'Val/recall': total_val_metrics[1] / len(self.valid_data_loader),
-            'Val/hmean': total_val_metrics[2] / len(self.valid_data_loader)
-        }
-=======
                     
 
         return {
@@ -224,4 +206,3 @@ class Trainer(BaseTrainer):
             'val/recall': total_val_metrics[1] / len(self.valid_data_loader),
             'val/hmean': total_val_metrics[2] / len(self.valid_data_loader)
         }
->>>>>>> 96939bd6414909256d36a8641d4ab33ec1cfea7f
