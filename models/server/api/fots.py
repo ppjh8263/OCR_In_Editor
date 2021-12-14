@@ -1,5 +1,5 @@
 import time
-from fastapi import UploadFile, File
+from fastapi import UploadFile, File, APIRouter
 from typing import List
 import base64
 
@@ -7,9 +7,14 @@ import datetime
 from server.modules.papago import translation_en2ko
 from server.modules.util import read_imagefile,read_imagebase
 from server.modules.inference import predict
-from api import app
 
-@app.post("/fots/image")
+fots_router = APIRouter(prefix='/fots')
+
+@fots_router.get("/", tags=['fots'])
+def read_root():
+    return "Boost Camp AI tech CV7's API fots router"
+
+@fots_router.post("/image", tags=['fots'])
 async def fots_image(file: UploadFile = File(...)):
     time_start = time.monotonic()
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
@@ -49,7 +54,7 @@ async def fots_image(file: UploadFile = File(...)):
 
 
 
-@app.post("/fots/base64")
+@fots_router.post("/base64", tags=['fots'])
 async def fots_base64(file: UploadFile = File(...)):
     time_start = time.monotonic()
     image = read_imagefile(base64.b64decode(await file.read()))
@@ -83,7 +88,7 @@ async def fots_base64(file: UploadFile = File(...)):
 
     return prediction
 
-@app.post("/fots/image/nopapago")
+@fots_router.post("/image/nopapago", tags=['fots'])
 async def fots_image_nopapago(file: UploadFile = File(...)):
     time_start = time.monotonic()
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
@@ -116,7 +121,7 @@ async def fots_image_nopapago(file: UploadFile = File(...)):
 
     return prediction
 
-@app.post("/fots/base64/nopapago")
+@fots_router.post("/base64/nopapago", tags=['fots'])
 async def fots_base64_nopapago(file: UploadFile = File(...)):
     time_start = time.monotonic()
     image = read_imagefile(base64.b64decode(await file.read()))
