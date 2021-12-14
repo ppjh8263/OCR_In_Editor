@@ -22,9 +22,9 @@ class BidirectionalLSTM(nn.Module):
         return output
     
 class ConvBNReLU(nn.Module):
-    def __init__(self, nIn, nOut):
+    def __init__(self, nIn, nOut, kernel=3, padding=1):
         super().__init__()
-        self.conv = nn.Conv2d(nIn, nOut, 3, 1, 1)
+        self.conv = nn.Conv2d(nIn, nOut, kernel, stride=1, padding=padding)
         self.bn = nn.BatchNorm2d(nOut)
         self.relu = nn.ReLU(True)
     def forward(self, inputs):
@@ -68,10 +68,12 @@ class RNet(nn.Module):
             nn.MaxPool2d(2, 2),
             Unit(64, 128, 2),
             nn.MaxPool2d(2, 2),
-            Unit(128, 256, 2),
+            Unit(128, 256, 3),
             nn.MaxPool2d((2, 1), (2, 1)),
-            Unit(256, 512, 2),
-            nn.MaxPool2d((2, 1), (2, 1))
+            Unit(256, 512, 4),
+            nn.MaxPool2d((2, 1), (2, 1)),
+            # ConvBNReLU(512, 512)
+            ConvBNReLU(512, 512, 2, 0)
         )
         self.rnn = nn.Sequential(
             BidirectionalLSTM(512, nh, nclass)

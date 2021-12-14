@@ -4,6 +4,7 @@ import torch
 import logging
 
 from modules.utils.util import make_dir
+from modules.base.upload_model import upload
 
 
 class BaseTrainer:
@@ -98,10 +99,10 @@ class BaseTrainer:
             if (self.monitor_mode == 'min' and log[self.monitor] < self.monitor_best) \
                     or (self.monitor_mode == 'max' and log[self.monitor] > self.monitor_best):
                 self.monitor_best = log[self.monitor]
-                self._save_checkpoint(epoch, log, save_best=True)
+                self._save_checkpoint(epoch, log, save_best=True, debug=self.config["debug"])
 
-            if epoch % self.save_freq == 0:
-                self._save_checkpoint(epoch, log)
+            # if epoch % self.save_freq == 0:
+            #     self._save_checkpoint(epoch, log)
 
         return log
 
@@ -122,7 +123,7 @@ class BaseTrainer:
 
         self.logger.debug(content)
 
-    def _save_checkpoint(self, epoch, log, save_best=False):
+    def _save_checkpoint(self, epoch, log, save_best=False, debug=False):
         """
         Saving checkpoints
 
@@ -139,6 +140,8 @@ class BaseTrainer:
             }
             filename = os.path.join(self.checkpoint_dir, 'model_best.pth.tar'.format(epoch))
             torch.save(state, filename)
+            if not debug and 'sql_host' in os.environ:
+                upload(filename, arch, epoch)
             self.logger.info("Saving current best: {} ...".format('model_best.pth.tar'))
         else:
             state = {

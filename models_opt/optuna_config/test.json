@@ -2,7 +2,7 @@
     "name": "E2E-STS",
     "cuda": true,
     "gpus": [0],
-    "model": "OCRModel4LSTM",
+    "model": "Base_RNet",
     "input": "image",
     "data_loader": {
         "data_dir": "datasets/test",

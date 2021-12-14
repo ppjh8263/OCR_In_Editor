@@ -22,7 +22,7 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 200,
+        "epochs": 250,
         "save_dir": "saved/",
         "save_freq": 10,
         "verbosity": 2,
@@ -33,7 +33,7 @@
     "debug": false,
     "optuna":{
         "trial": 1,
-        "study_name": "base_rnet"
+        "study_name": "base_rnet(32,180)"
     },
     "wandb": {
         "project": "OE"

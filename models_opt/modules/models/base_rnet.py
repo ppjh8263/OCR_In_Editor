@@ -96,7 +96,8 @@ class Base_RNet:
         roi_input = feature_map if is_feature else image
         if self.training:
             rois = batch_roi_transform(roi_input, boxes[:, :8]/4.0 if is_feature else boxes[:, :8], mapping, 
-                                       size=(16, 128), is_feature=is_feature)
+                                       # size=(16, 128), is_feature=is_feature)
+                                       is_feature=is_feature)
             pred_mapping = mapping
             pred_boxes = boxes
         else:
@@ -121,7 +122,8 @@ class Base_RNet:
                 pred_boxes = np.concatenate(pred_boxes)
                 pred_mapping = np.concatenate(pred_mapping)
                 rois = batch_roi_transform(roi_input, pred_boxes[:, :8]/4.0 if is_feature else pred_boxes[:, :8], pred_mapping, 
-                                           size=(16, 128), is_feature=is_feature)
+                                           # size=(16, 128), is_feature=is_feature)
+                                           is_feature=is_feature)
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
