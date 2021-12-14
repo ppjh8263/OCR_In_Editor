@@ -6,18 +6,19 @@ import torch.optim as optim
 import logging
 
 from modules.base.base_model import BaseModel
-from modules.models.core.crnn_skip import CRNN
+from modules.models.core.rnet import RNet
 from modules.models.core.fpn_resnet import ResNetBackbone
 from modules.utils.converter import keys
 from modules.utils.util import detect
 from modules.utils.roi import batch_roi_transform
 
-class OCRModel_With_Skip:
+class Base_RNet:
 
     def __init__(self, config):
-        logging.info("Model: OCRModel with skip connection")
+        logging.info("Model: RNet")
         num_class = len(keys) + 1
         backbone_channel_out = 256
+        self.config = config
         self.backbone = ResNetBackbone(config)
         self.detector = Detector(config, backbone_channel_out)
         self.recognizer = Recognizer(num_class, config)
@@ -90,12 +91,12 @@ class OCRModel_With_Skip:
 
         feature_map = self.backbone.forward(image)
         score_map, geo_map = self.detector(feature_map)
-
+         
+        is_feature = self.config["input"] == "feature map"
+        roi_input = feature_map if is_feature else image
         if self.training:
-            # Original
-            # rois = batch_roi_transform(image, boxes[:, :8], mapping)
-            # With shared conv
-            rois = batch_roi_transform(feature_map, boxes[:, :8], mapping)
+            rois = batch_roi_transform(roi_input, boxes[:, :8]/4.0 if is_feature else boxes[:, :8], mapping, 
+                                       size=(16, 128), is_feature=is_feature)
             pred_mapping = mapping
             pred_boxes = boxes
         else:
@@ -119,15 +120,14 @@ class OCRModel_With_Skip:
             if len(pred_mapping) > 0:
                 pred_boxes = np.concatenate(pred_boxes)
                 pred_mapping = np.concatenate(pred_mapping)
-                # Original
-                # rois = batch_roi_transform(image, pred_boxes[:, :8], pred_mapping)
-                # With shared conv
-                rois = batch_roi_transform(feature_map, pred_boxes[:, :8], pred_mapping)
+                rois = batch_roi_transform(roi_input, pred_boxes[:, :8]/4.0 if is_feature else pred_boxes[:, :8], pred_mapping, 
+                                           size=(16, 128), is_feature=is_feature)
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
         preds = self.recognizer(rois)
         preds_size = torch.LongTensor([preds.size(0)] * int(preds.size(1))).to(device)
+        
 
         return score_map, geo_map, (preds, preds_size), pred_boxes, pred_mapping, rois
 
@@ -136,10 +136,7 @@ class Recognizer(BaseModel):
 
     def __init__(self, nclass, config):
         super().__init__(config)
-        # Original
-        # self.crnn = CRNN(32, 1, nclass, 256)
-        # With shared conv
-        self.crnn = CRNN(32, 256, nclass, 256)
+        self.crnn = RNet(1, nclass, 256)
 
     def forward(self, rois):
         return self.crnn(rois)

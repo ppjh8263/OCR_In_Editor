@@ -4,18 +4,19 @@ import torch.nn as nn
 import numpy as np
 import torch.optim as optim
 import logging
+import cv2
 
 from modules.base.base_model import BaseModel
-from modules.models.core.crnn import CRNN
+from modules.models.core.base_recognition import BaseRecognition
 from modules.models.core.fpn_resnet import ResNetBackbone
 from modules.utils.converter import keys
 from modules.utils.util import detect
 from modules.utils.roi import batch_roi_transform
 
-class OCRModel:
+class BaseOCRModel:
 
     def __init__(self, config):
-        logging.info("Model: OCRModel")
+        logging.info("Model: Base model")
         num_class = len(keys) + 1
         backbone_channel_out = 256
         self.config = config
@@ -95,7 +96,7 @@ class OCRModel:
         is_feature = self.config["input"] == "feature map"
         roi_input = feature_map if is_feature else image
         if self.training:
-            rois = batch_roi_transform(roi_input, boxes[:, :8]/4.0 if is_feature else boxes[:, :8], mapping, is_feature=is_feature)
+            rois = batch_roi_transform(roi_input, boxes[:, :8]/4.0 if is_feature else boxes[:, :8], mapping, size=(8, 128), is_feature=is_feature)
             pred_mapping = mapping
             pred_boxes = boxes
         else:
@@ -119,13 +120,12 @@ class OCRModel:
             if len(pred_mapping) > 0:
                 pred_boxes = np.concatenate(pred_boxes)
                 pred_mapping = np.concatenate(pred_mapping)
-                rois = batch_roi_transform(roi_input, pred_boxes[:, :8]/4.0 if is_feature else pred_boxes[:, :8], pred_mapping, is_feature=is_feature)
+                rois = batch_roi_transform(roi_input, pred_boxes[:, :8]/4.0 if is_feature else pred_boxes[:, :8], pred_mapping, size=(8, 128), is_feature=is_feature)
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
         preds = self.recognizer(rois)
         preds_size = torch.LongTensor([preds.size(0)] * int(preds.size(1))).to(device)
-        
 
         return score_map, geo_map, (preds, preds_size), pred_boxes, pred_mapping, rois
 
@@ -134,9 +134,10 @@ class Recognizer(BaseModel):
 
     def __init__(self, nclass, config):
         super().__init__(config)
-        self.crnn = CRNN(32, 256 if config["input"] == "feature map" else 1, nclass, 256)
+        self.crnn = BaseRecognition(256 if config["input"] == "feature map" else 1, nclass, 256)
 
     def forward(self, rois):
+        # rois = self.conv1d(rois)
         return self.crnn(rois)
 
 

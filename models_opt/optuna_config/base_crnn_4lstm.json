@@ -5,7 +5,7 @@
     "model": "OCRModel4LSTM",
     "input": "image",
     "data_loader": {
-        "data_dir": "datasets/test",
+        "data_dir": "datasets",
         "input_size": 512,
         "batch_size": 4,
         "shuffle": true,
@@ -13,7 +13,7 @@
     },
     "validation": {
         "skip_lt_epoch": 0,
-        "validation_split": 0.5,
+        "validation_split": 0.1,
         "shuffle": true
     },
     "optimizer_type": "Adam",
@@ -22,7 +22,7 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 1,
+        "epochs": 150,
         "save_dir": "saved/",
         "save_freq": 10,
         "verbosity": 2,
@@ -30,9 +30,12 @@
         "monitor": "val_hmean",
         "monitor_mode": "max"
     },
-    "debug": true,
+    "debug": false,
     "optuna":{
         "trial": 1,
-        "study_name": "test"
+        "study_name": "crnn_4lstm"
+    },
+    "wandb": {
+        "project": "OE"
     }
 }

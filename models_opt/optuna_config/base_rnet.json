@@ -2,13 +2,14 @@
     "name": "E2E-STS",
     "cuda": true,
     "gpus": [0],
-    "model": "OCRModel",
+    "model": "Base_RNet",
+    "input": "image",
     "data_loader": {
         "data_dir": "datasets",
         "input_size": 512,
         "batch_size": 4,
         "shuffle": true,
-        "workers": 2
+        "workers": 5
     },
     "validation": {
         "skip_lt_epoch": 0,
@@ -21,9 +22,9 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 1,
+        "epochs": 150,
         "save_dir": "saved/",
-        "save_freq": 3,
+        "save_freq": 10,
         "verbosity": 2,
         "print_step": 25,
         "monitor": "val_hmean",
@@ -31,17 +32,10 @@
     },
     "debug": false,
     "optuna":{
-        "trial": 2,
-        "study_name": "exp04",
-        "args":{
-            "epochs":[150, 200],
-            "optimizers": [
-                {"optimizer_type": "Adam", "args": {"lr": 0.0001, "weight_decay": 1e-5}},
-                {"optimizer_type": "AdamW", "args": {"lr": 0.0001, "weight_decay": 1e-5}}
-            ]
-        }
+        "trial": 1,
+        "study_name": "base_rnet"
     },
     "wandb": {
-        "project": "OCR"
+        "project": "OE"
     }
 }

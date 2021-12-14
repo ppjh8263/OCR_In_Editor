@@ -43,6 +43,7 @@ def objective(trial, config, resume):
     # initial model
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['gpus']])
     ocr_model = getattr(__import__(f"modules.models.{config['model'].lower()}", fromlist=(config['model'])), config['model'])(config)
+    logging.debug(ocr_model.summary())
     
     wandb_log = None
     dir_name = f"{config['optuna']['study_name']}_#{trial.number:03}_{config['trainer']['epochs']}"
@@ -72,14 +73,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MLT-OCR')
     parser.add_argument('-c', '--config', default='./optuna_config/config.json', type=str, help='path to config file')
     parser.add_argument('-r', '--resume', default=None, type=str, help='path to latest checkpoint (default: None)')
-    parser.add_argument("--storage", default="postgresql://postgres:0000@localhost:6006/postgres", type=str, help="Optuna database storage path.")
+    parser.add_argument("--storage", default="", type=str, help="Optuna database storage path.")
     args = parser.parse_args()
     config = json.load(open(args.config))
     if args.resume:
         logger.warning('Warning: --config overridden by --resume')
 
     # main(config, args.resume)
-    rdb_storage = optuna.storages.RDBStorage(url=args.storage)
+    if args.storage != "":
+        rdb_storage = optuna.storages.RDBStorage(url=args.storage)
+    else:
+        rdb_storage = None
     study = optuna.create_study(
         directions=["maximize", "maximize", "maximize"],
         study_name=config['optuna']['study_name'],

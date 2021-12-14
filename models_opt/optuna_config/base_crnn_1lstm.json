@@ -2,13 +2,14 @@
     "name": "E2E-STS",
     "cuda": true,
     "gpus": [0],
-    "model": "OCRModel",
+    "model": "OCRModel1LSTM",
+    "input": "image",
     "data_loader": {
         "data_dir": "datasets",
         "input_size": 512,
         "batch_size": 4,
         "shuffle": true,
-        "workers": 2
+        "workers": 5
     },
     "validation": {
         "skip_lt_epoch": 0,
@@ -17,13 +18,13 @@
     },
     "optimizer_type": "Adam",
     "optimizer": {
-        "lr": 0.0005,
+        "lr": 0.0001,
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 120,
+        "epochs": 150,
         "save_dir": "saved/",
-        "save_freq": 3,
+        "save_freq": 10,
         "verbosity": 2,
         "print_step": 25,
         "monitor": "val_hmean",
@@ -32,9 +33,9 @@
     "debug": false,
     "optuna":{
         "trial": 1,
-        "study_name": "exp06"
+        "study_name": "crnn_1lstm"
     },
     "wandb": {
-        "project": "OCR"
+        "project": "OE"
     }
 }

@@ -2,7 +2,8 @@
     "name": "E2E-STS",
     "cuda": true,
     "gpus": [0],
-    "model": "OCRModel",
+    "model": "BaseOCRModel",
+    "input": "feature map",
     "data_loader": {
         "data_dir": "datasets",
         "input_size": 512,
@@ -21,9 +22,9 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 1,
+        "epochs": 150,
         "save_dir": "saved/",
-        "save_freq": 3,
+        "save_freq": 10,
         "verbosity": 2,
         "print_step": 25,
         "monitor": "val_hmean",
@@ -31,18 +32,10 @@
     },
     "debug": false,
     "optuna":{
-        "trial": 3,
-        "study_name": "exp05",
-        "args":{
-            "epochs":[120],
-            "optimizers": [
-                {"optimizer_type": "Adam", "args": {"lr": 0.0001, "weight_decay": 1e-5}},
-                {"optimizer_type": "Adam", "args": {"lr": 0.001, "weight_decay": 1e-5}},
-                {"optimizer_type": "AdamW", "args": {"lr": 0.0001, "weight_decay": 1e-5}}
-            ]
-        }
+        "trial": 1,
+        "study_name": "BaseOCRModel"
     },
     "wandb": {
-        "project": "OCR"
+        "project": "OE"
     }
 }

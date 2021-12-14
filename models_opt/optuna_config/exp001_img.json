@@ -3,12 +3,13 @@
     "cuda": true,
     "gpus": [0],
     "model": "OCRModel",
+    "input": "image",
     "data_loader": {
         "data_dir": "datasets",
         "input_size": 512,
-        "batch_size": 8,
+        "batch_size": 4,
         "shuffle": true,
-        "workers": 4
+        "workers": 3
     },
     "validation": {
         "skip_lt_epoch": 0,
@@ -21,27 +22,20 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 1,
+        "epochs": 150,
         "save_dir": "saved/",
-        "save_freq": 3,
+        "save_freq": 10,
         "verbosity": 2,
         "print_step": 25,
-        "monitor": "hmean",
+        "monitor": "val_hmean",
         "monitor_mode": "max"
     },
     "debug": false,
     "optuna":{
-        "trial": 2,
-        "study_name": "exp03",
-        "args":{
-            "epochs":[200],
-            "optimizers": [
-                {"optimizer_type": "Adam", "args": {"lr": 0.0001, "weight_decay": 1e-5}},
-                {"optimizer_type": "AdamW", "args": {"lr": 0.0001, "weight_decay": 1e-5}}
-            ]
-        }
+        "trial": 1,
+        "study_name": "crnn_base"
     },
     "wandb": {
-        "project": "OCR"
+        "project": "OE"
     }
 }

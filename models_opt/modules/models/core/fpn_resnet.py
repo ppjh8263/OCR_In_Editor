@@ -306,6 +306,8 @@ class ResNetBackbone(BaseModel):
     def __init__(self, config):
         super(ResNetBackbone, self).__init__(config)
         self.backbone = resnet50(pretrained=True)
+        # exp06_#008
+        # self.backbone = resnet50(pretrained=False)
 
     def forward(self, inputs):
         return self.backbone(inputs)

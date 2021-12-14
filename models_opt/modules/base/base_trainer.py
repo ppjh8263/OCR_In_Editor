@@ -137,7 +137,7 @@ class BaseTrainer:
                 'epoch': epoch,
                 'state_dict': self.model.state_dict()
             }
-            filename = os.path.join(self.checkpoint_dir, 'model_best_epoch{:03d}.pth.tar'.format(epoch))
+            filename = os.path.join(self.checkpoint_dir, 'model_best.pth.tar'.format(epoch))
             torch.save(state, filename)
             self.logger.info("Saving current best: {} ...".format('model_best.pth.tar'))
         else:
