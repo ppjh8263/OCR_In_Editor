@@ -11,8 +11,6 @@ from modules.data.loader import ICDARDataLoader
 from modules.trainer.trainer import Trainer
 from modules.models.metric import icdar_metric
 
-import wandb
-
 logging.basicConfig(level=logging.DEBUG, format='')
 
 
@@ -27,14 +25,14 @@ def main(config, resume):
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['gpus']])
     model = OCRModel(config)
     model.summary()
+
     wandb.init(
         project='fots',
-        name='Shared_res50'
+        name='res101_roi_(32,96)'
     )
     
-    wandb.log(config)
     loss = E2ELoss()
-    trainer = Trainer(model, loss, icdar_metric, resume, config, train_dataloader, val_dataloader, train_logger, wandb=wandb)
+    trainer = Trainer(model, loss, icdar_metric, resume, config, train_dataloader, val_dataloader, train_logger, wandb)
     trainer.train()
 
 

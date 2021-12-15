@@ -12,7 +12,7 @@ model_urls = {
     'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
     'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
-    'resnet101': 'https://download.pytorch.org/models/resnet101-5d3mb4d8f.pth',
+    "resnet101": 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
 }
 
@@ -305,7 +305,7 @@ class ResNetBackbone(BaseModel):
 
     def __init__(self, config):
         super(ResNetBackbone, self).__init__(config)
-        self.backbone = resnet50(pretrained=True)
+        self.backbone = resnet101(pretrained=True)
 
     def forward(self, inputs):
         return self.backbone(inputs)

@@ -139,4 +139,4 @@ saved/
 
 #log
 wandb/
-
+*.txt

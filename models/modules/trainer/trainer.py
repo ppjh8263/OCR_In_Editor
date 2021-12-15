@@ -1,6 +1,5 @@
 import torch
 import numpy as np
-import wandb
 
 from modules.utils.converter import keys
 from modules.base.base_trainer import BaseTrainer
@@ -102,24 +101,24 @@ class Trainer(BaseTrainer):
                             len(self.data_loader) * self.data_loader.batch_size,
                             100.0 * batch_idx / len(self.data_loader),
                             loss.item(), iou_loss.item(), cls_loss.item(), reg_loss.item()))
-                
+
                     self.wandb.log({
-                        "Epoch" : epoch,
-                        "Loss": loss.item(),
-                        "IoU_Loss": iou_loss.item(),
-                        "Class_Loss": cls_loss.item(),
-                        "Recognition_Loss": reg_loss.item()
-                    })
+                        "train/Epoch" : epoch,
+                        "train/Loss" : loss.item(),
+                        "train/IOU Loss": iou_loss.item(),
+                        "train/CLS Loss" : cls_loss.item(),
+                        "Recognition Loss" : reg_loss.item()
+                        })
 
             except Exception:
                 print(image_paths)
                 raise
-    
+
         log = {
-            'Train/loss': total_loss / len(self.data_loader),
-            'Train/precious': total_metrics[0] / len(self.data_loader),
-            'Train/recall': total_metrics[1] / len(self.data_loader),
-            'Train/hmean': total_metrics[2] / len(self.data_loader)
+            'loss': total_loss / len(self.data_loader),
+            'precious': total_metrics[0] / len(self.data_loader),
+            'recall': total_metrics[1] / len(self.data_loader),
+            'hmean': total_metrics[2] / len(self.data_loader)
         }
 
 
@@ -145,7 +144,6 @@ class Trainer(BaseTrainer):
         """
         self.model.eval()
         total_val_metrics = np.zeros(3)
-        total_val_loss = 0
         with torch.no_grad():
             for batch_idx, gt in enumerate(self.valid_data_loader):
                 try:
@@ -154,19 +152,6 @@ class Trainer(BaseTrainer):
 
                     pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, rois = self.model.forward(
                         img, boxes, mapping)
-                    # print(f"pred_score_map is {pred_score_map.shape}")
-                    # print(f"pred_geo_map is {pred_geo_map.shape}") 
-                    # print(f"pred_recog is {pred_recog}")
-                    # print(f"pred_boxes is {len(pred_boxes)}")
-                    # print(f"pred_mapping is {len(pred_mapping)}")
-                    # print(f"rois is {rois}")
-                    # print(f"pred_recog2 is {pred_recog}")
-                    # print(f"training_mask is {training_mask.shape}")
-                    v_iou_loss, v_cls_loss, v_reg_loss = self.loss(pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, 
-                                                            rois, pred_recog, training_mask)
-                    val_loss = v_iou_loss + v_cls_loss + v_reg_loss
-
-                    total_val_loss += val_loss.item()
                     pred_transcripts = []
                     pred_fns = []
                     if len(pred_mapping) > 0:
@@ -188,13 +173,6 @@ class Trainer(BaseTrainer):
                                 batch_idx * self.valid_data_loader.batch_size,
                                 len(self.valid_data_loader) * self.valid_data_loader.batch_size,
                                 100.0 * batch_idx / len(self.valid_data_loader)))
-
-                    self.wandb.log({
-                    "Loss": val_loss.item(),
-                    "IoU_Loss": v_iou_loss,
-                    "Class_Loss": v_cls_loss,
-                    "Recognition_Loss": v_reg_loss
-                })
 
                 except Exception:
                     print(imagePaths)
