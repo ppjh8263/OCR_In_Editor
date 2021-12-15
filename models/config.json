@@ -28,5 +28,6 @@
         "monitor": "hmean",
         "monitor_mode": "max"
     },
+    "model":"rnet",
     "debug": false
 }

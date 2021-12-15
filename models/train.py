@@ -5,6 +5,7 @@ import argparse
 
 from modules.models.loss import E2ELoss
 from modules.models.model import OCRModel
+from modules.models.base_rnet import Base_RNet
 from modules.logger.logger import Logger
 from modules.data.loader import ICDARDataLoader
 from modules.trainer.trainer import Trainer
@@ -24,12 +25,19 @@ def main(config, resume):
 
     # initial model
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['gpus']])
-    model = OCRModel(config)
+    
+    
+    if config['model'] == 'rnet':      # RNet
+        model = Base_RNet(config)
+    else:                              # crnn
+        model = OCRModel(config)
+    
+    
     model.summary()
     
     wandb.init(
         project='final_project',
-        name='asdf'
+        name='baseline_icdar1517_ver2'
     )
     
     loss = E2ELoss()
