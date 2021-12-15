@@ -7,6 +7,7 @@ import logging
 
 from modules.base.base_model import BaseModel
 from modules.models.core.rnet import RNet
+from modules.models.core.rnet_mish import RNetMish
 from modules.models.core.fpn_resnet import ResNetBackbone
 from modules.utils.converter import keys
 from modules.utils.util import detect
@@ -91,13 +92,9 @@ class Base_RNet:
 
         feature_map = self.backbone.forward(image)
         score_map, geo_map = self.detector(feature_map)
-         
-        is_feature = self.config["input"] == "feature map"
-        roi_input = feature_map if is_feature else image
+
         if self.training:
-            rois = batch_roi_transform(roi_input, boxes[:, :8]/4.0 if is_feature else boxes[:, :8], mapping, 
-                                       # size=(16, 128), is_feature=is_feature)
-                                       is_feature=is_feature)
+            rois = batch_roi_transform(image, boxes[:, :8], mapping, size=(32, 180))
             pred_mapping = mapping
             pred_boxes = boxes
         else:
@@ -121,9 +118,7 @@ class Base_RNet:
             if len(pred_mapping) > 0:
                 pred_boxes = np.concatenate(pred_boxes)
                 pred_mapping = np.concatenate(pred_mapping)
-                rois = batch_roi_transform(roi_input, pred_boxes[:, :8]/4.0 if is_feature else pred_boxes[:, :8], pred_mapping, 
-                                           # size=(16, 128), is_feature=is_feature)
-                                           is_feature=is_feature)
+                rois = batch_roi_transform(image, pred_boxes[:, :8], pred_mapping, size=(32, 180))
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
@@ -138,10 +133,11 @@ class Recognizer(BaseModel):
 
     def __init__(self, nclass, config):
         super().__init__(config)
-        self.crnn = RNet(1, nclass, 256)
+        # self.rnet = RNet(1, nclass, 256)
+        self.rnet = RNetMish(1, nclass, 256)
 
     def forward(self, rois):
-        return self.crnn(rois)
+        return self.rnet(rois)
 
 
 class Detector(BaseModel):
