@@ -26,6 +26,7 @@ def load_model(model_path, with_gpu=None):
     return model
 
 def load_model_at_run():
+    print("start model load...")
     global model
     if model is None:
         with_gpu = True if torch.cuda.is_available() else False

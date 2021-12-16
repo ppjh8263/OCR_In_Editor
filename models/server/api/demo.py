@@ -1,5 +1,5 @@
 import time
-from fastapi import UploadFile, File
+from fastapi import UploadFile, File, APIRouter
 from typing import List
 import base64
 
@@ -8,9 +8,15 @@ import random
 from server.modules.papago import translation_en2ko
 from server.modules.generate_point import get_random_polygon, get_random_point
 from server.modules.util import read_imagefile
-from api import app
 
-@app.post("/bbox_demo/image")
+demo_router = APIRouter(prefix='/bbox_demo')
+
+@demo_router.get("/", tags=['demo'])
+def read_root():
+    return "Boost Camp AI tech CV7's API demo router"
+
+
+@demo_router.post("/image", tags=['demo'])
 async def demo_image(file: UploadFile = File(...)):
     time_start = time.monotonic()
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
@@ -41,7 +47,7 @@ async def demo_image(file: UploadFile = File(...)):
 
     return prediction
 
-@app.post("/bbox_demo/base64")
+@demo_router.post("/base64", tags=['demo'])
 async def demo_base64(file: UploadFile = File(...)):
     time_start = time.monotonic()
     image = read_imagefile(base64.b64decode(await file.read()))
@@ -69,7 +75,7 @@ async def demo_base64(file: UploadFile = File(...)):
 
     return prediction
 
-@app.post("/bbox_demo/nopapago")
+@demo_router.post("/nopapago", tags=['demo'])
 async def demo_base64(file: UploadFile = File(...)):
     time_start = time.monotonic()
     image = read_imagefile(base64.b64decode(await file.read()))
