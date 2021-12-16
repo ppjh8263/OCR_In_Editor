@@ -59,14 +59,32 @@ class ICDAR(Dataset):
         image_name = self.images[index]
         bboxes = self.bboxs[index]  # num_words * 8
         transcripts = self.transcripts[index]
-
-        try:
-            return self.__transform((image_name, bboxes, transcripts))
-        except Exception as e:
-            return self.__getitem__(torch.tensor(np.random.randint(0, len(self))))
+        
+        return __load_transformed_image((image_name, bboxes, transcripts))
+    
+        # try:
+        #     return self.__transform((image_name, bboxes, transcripts))
+        # except Exception as e:
+        #     return self.__getitem__(torch.tensor(np.random.randint(0, len(self))))
 
     def __len__(self):
         return len(self.images)
+    
+    
+    def __load_transformed_image(self, gt):
+        image_path, wordBBoxes, transcripts = gt
+        image = cv2.imread(image_path.as_posix())
+        
+        rectangles = []
+        for wordbbox in wordBBoxes:
+            rectangles.append(np.array(wordbbox, dtype=np.float32).flatten())
+            
+        score_maps = np.zeros((128, 128, 1), dtype=np.float32)
+        geo_maps = np.zeros((128, 128, 5), dtype=np.float32)
+        training_masks = np.ones((128, 128, 1), dtype=np.float32)
+        
+        return image_path, image, score_maps, geo_maps, training_masks, transcripts, rectangles
+    
 
     def __transform(self, gt, random_scale=np.array([0.5, 1, 2.0, 3.0]), background_ratio=3. / 8):
         """
