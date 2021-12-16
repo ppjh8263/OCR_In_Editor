@@ -12,7 +12,7 @@
     },
     "input": "image",
     "data_loader": {
-        "data_dir": "datasets/test",
+        "data_dir": "datasets",
         "input_size": 512,
         "batch_size": 4,
         "shuffle": true,
