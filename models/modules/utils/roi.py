@@ -3,7 +3,7 @@ import torch
 import numpy as np
 
 
-def roi_transform(feature, box, size=(32, 96)):
+def roi_transform(feature, box, size=(32, 180)):
     resize_h, resize_w = size
     x1, y1, x2, y2, x3, y3, x4, y4 = box
     # rotated_rect = cv2.minAreaRect(np.array([[x1, y1], [x2, y2], [x3, y3], [x4, y4]]))
@@ -58,7 +58,7 @@ def param2theta(param, w, h):
     return theta
 
 
-def batch_roi_transform(feature_map, boxes, mapping, size=(32, 96)):
+def batch_roi_transform(feature_map, boxes, mapping, size=(32, 180)):
     rois = []
     for img_index, box in zip(mapping, boxes):
         feature = feature_map[img_index]

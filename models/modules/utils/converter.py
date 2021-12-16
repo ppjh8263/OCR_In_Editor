@@ -1,7 +1,7 @@
 import torch
 import unicodedata as ud
 
-# keys = ' 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`=;,./~!@#$%^&*()_+|:<>?°·£¥₩€-[]'"{}\'
+# keys = ' 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`=;,./~!@#$%^&*()_+|:<>?°·£¥₩€-[]'"´{}\'
 with open('modules/utils/codec.txt', 'r') as f:
     keys = f.readlines()[0]
 

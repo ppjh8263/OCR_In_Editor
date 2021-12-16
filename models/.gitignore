@@ -130,12 +130,14 @@ dmypy.json
 
 # data
 datasets/
+*.zip
 
 # model file
 output/
 *.out
 runs/
 saved/
+modules/models/core/pretrain
 
 #log
 wandb/

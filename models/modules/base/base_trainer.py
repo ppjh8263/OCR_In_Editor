@@ -159,7 +159,7 @@ class BaseTrainer:
                 'monitor_best': self.monitor_best
             }
             filename = os.path.join(self.checkpoint_dir,
-                                    'checkpoint-epoch{:03d}-loss-{:.4f}.pth.tar'.format(epoch, log['loss']))
+                                    'res50_mish_pretrained-epoch{:03d}-loss-{:.4f}.pth.tar'.format(epoch, log['loss']))
             torch.save(state, filename)
             self.logger.info("Saving checkpoint: {} ...".format(filename))
 

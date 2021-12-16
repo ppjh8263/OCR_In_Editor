@@ -5,7 +5,7 @@
     "data_loader": {
         "data_dir": "datasets",
         "input_size": 512,
-        "batch_size": 16,
+        "batch_size": 8,
         "shuffle": true,
         "workers": 5
     },
@@ -20,7 +20,7 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 200,
+        "epochs": 300,
         "save_dir": "saved/",
         "save_freq": 10,
         "verbosity": 2,

@@ -33,7 +33,6 @@ class ICDARDataLoader:
 
     def __train_val_split(self, ds):
         """
-
         :param ds: dataset
         :return:
         """

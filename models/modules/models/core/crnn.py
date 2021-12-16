@@ -1,6 +1,11 @@
 # import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from modules.models.core.mish import Mish 
+#Mish - "Mish: A Self Regularized Non-Monotonic Neural Activation Function"
+#https://arxiv.org/abs/1908.08681v1
+#implemented for PyTorch / FastAI by lessw2020 
+#github: https://github.com/lessw2020/mish
 
 
 class BidirectionalLSTM(nn.Module):
@@ -46,7 +51,7 @@ class CRNN(nn.Module):
                 cnn.add_module('relu{0}'.format(i),
                                nn.LeakyReLU(0.2, inplace=True))
             else:
-                cnn.add_module('relu{0}'.format(i), nn.ReLU(True))
+                cnn.add_module('relu{0}'.format(i), Mish())
 
         convRelu(0)
         cnn.add_module('pooling{0}'.format(0), nn.MaxPool2d(2, 2))  # 64x16x64
@@ -63,6 +68,9 @@ class CRNN(nn.Module):
         convRelu(6, True)  # 512x1x16
 
         self.cnn = cnn
+        # self.rnn = nn.Sequential(
+        #     BidirectionalLSTM(512, nh, nclass)
+        # )
         self.rnn = nn.Sequential(
             BidirectionalLSTM(512, nh, nh),
             BidirectionalLSTM(nh, nh, nclass))
