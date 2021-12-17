@@ -53,7 +53,7 @@ def transform(gt, input_size=512, crop=False, random_scale=np.array([0.5, 1, 2.0
             print(image_path)
         text_polys, text_tags = check_and_validate_polys(text_polys, text_tags, (h, w))
 
-        rd_scale = np.random.choice(random_scale)
+        rd_scale = 1 #np.random.choice(random_scale)
         im = cv2.resize(im, dsize=None, fx=rd_scale, fy=rd_scale)
         text_polys *= rd_scale
 
@@ -82,12 +82,12 @@ def transform(gt, input_size=512, crop=False, random_scale=np.array([0.5, 1, 2.0
         new_h, new_w, _ = im.shape
         score_map, geo_map, training_mask, rectangles = generate_rbox((new_h, new_h), text_polys, text_tags)
 
-        for rect_idx in range(len(rectangles)):
-            if rectangles[rect_idx][0] == "*":
-                text_tags[rect_idx] = False
-                print('found worng point')
+        for rectangle_idx in range(len(rectangles)):      # erase wrong bbox annotation
+            if rectangles[rectangle_idx][0] == '*':
+                mask[rectangle_idx] = False
+                print('Erase a wrong point in '+str(image_path)+' - line '+str(rectangle_idx))
 
-        images = im[:, :, ::-1].astype(np.float32)  # bgr -> rgb
+        images = im[:, :, :].astype(np.float32)  # bgr -> rgb : im[:, :, ::-1].astype(np.float32)
         
         transcripts = list(compress(transcripts, text_tags))
         rectangles = list(compress(rectangles, text_tags))  # [ [pt1, pt2, pt3, pt3],  ]
