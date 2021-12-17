@@ -146,9 +146,9 @@ class BaseTrainer:
                 'epoch': epoch,
                 'state_dict': self.model.state_dict()
             }
-            filename = os.path.join(self.checkpoint_dir, 'model_best.pth.tar')
+            filename = os.path.join(self.checkpoint_dir, 'res101_scheduler_best.pth.tar')
             torch.save(state, filename)
-            self.logger.info("Saving current best: {} ...".format('model_best.pth.tar'))
+            self.logger.info("Saving current best: {} ...".format('res101_scheduler_best.pth.tar'))
         else:
             state = {
                 'arch': arch,
@@ -159,7 +159,7 @@ class BaseTrainer:
                 'monitor_best': self.monitor_best
             }
             filename = os.path.join(self.checkpoint_dir,
-                                    'res50_mish_pretrained-epoch{:03d}-loss-{:.4f}.pth.tar'.format(epoch, log['loss']))
+                                    'res101_scheduler-epoch{:03d}-loss-{:.4f}.pth.tar'.format(epoch, log['loss']))
             torch.save(state, filename)
             self.logger.info("Saving checkpoint: {} ...".format(filename))
 

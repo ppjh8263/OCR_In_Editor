@@ -5,23 +5,20 @@ import numpy as np
 import torch.optim as optim
 
 from modules.base.base_model import BaseModel
-from modules.models.core.crnn import CRNN
-# from modules.models.Nets.pren import Pren
+from modules.models.Nets.pren import Pren
 from modules.models.core.fpn_resnet import  ResNetBackbone, resnet101
 from modules.utils.converter import keys
 from modules.utils.util import detect
 from modules.utils.roi import batch_roi_transform
 
 # checkpoint = torch.load('saved/new/res101_crnn/checkpoint-epoch200-loss-0.7475.pth.tar')
-checkpoint = torch.load('saved/resnet101_best_hmean/res50_mish_pretrained-epoch240-loss-0.1100.pth.tar')
+# checkpoint = torch.load('saved/res101_gray_pretrain/new/res50_mis-epoch240-loss-0.1670.pth.tar')
 
 class OCRModel:
 
     def __init__(self, config):
         num_class = len(keys) + 1
         self.backbone = ResNetBackbone(config)
-        # bbNet = resnet101(pretrained=True)
-        # self.backbone = SharedConv(bbNet, config)
         backbone_channel_out = 256
         self.detector = Detector(config, backbone_channel_out)
         self.recognizer = Recognizer(num_class, config)
@@ -121,10 +118,11 @@ class OCRModel:
             if len(pred_mapping) > 0:
                 pred_boxes = np.concatenate(pred_boxes)
                 pred_mapping = np.concatenate(pred_mapping)
-                rois = batch_roi_transform(image, pred_boxes[:, :8], pred_mapping)
+                # rois = batch_roi_transform(image, pred_boxes[:, :8], pred_mapping)
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
+        rois
         preds = self.recognizer(rois)
         preds_size = torch.LongTensor([preds.size(0)] * int(preds.size(1))).to(device)
 
@@ -163,28 +161,11 @@ class Recognizer(BaseModel):
 
     def __init__(self, nclass, config):
         super().__init__(config)
-        
-        self.crnn = CRNN(32, 1, nclass, 256)
-        # self.crnn.apply()
-        # pre_trainmodel = torch.load('./modules/models/core/pretrain/crnn.pth')
-        pre_trainmodel = checkpoint['state_dict']['2']
-        model_dict = self.crnn.state_dict()
-        # replace the classfidy layer parameters
-        # for k,v in model_dict.items():
-        #     if not (k == 'rnn.1.embedding.weight' or k == 'rnn.1.embedding.bias' or k == 'cnn.batchnorm2.num_batches_tracked'
-        #            or k == 'cnn.batchnorm4.num_batches_tracked' or k == 'cnn.batchnorm6.num_batches_tracked'):
-        #                 model_dict[k] = pre_trainmodel[k]
-        for k,v in model_dict.items():
-            if not (k == 'rnn.1.embedding.weight' or k == 'rnn.1.embedding.bias' or k == 'cnn.batchnorm2.num_batches_tracked'
-                   or k == 'cnn.batchnorm4.num_batches_tracked' or k == 'cnn.batchnorm6.num_batches_tracked'):
-                        model_dict[k] = pre_trainmodel["crnn."+k]
-                
-
-        self.crnn.load_state_dict(model_dict)
-        # self.crnn.register_backward_hook(self.crnn.backward_hook)
+        self. pren = Pren(config, nclass)
 
     def forward(self, inputs):
-        return self.crnn(inputs)
+        return self.pren(inputs)
+        # return self.crnn(rois)
 
 
 class Detector(BaseModel):

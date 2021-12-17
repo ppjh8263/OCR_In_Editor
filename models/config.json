@@ -1,5 +1,5 @@
 {
-    "name": "new",
+    "name": "res101_scheduler",
     "cuda": true,
     "gpus": [0],
     "data_loader": {
@@ -14,10 +14,11 @@
         "validation_split": 0.1,
         "shuffle": true
     },
-    "optimizer_type": "Adam",
+    "optimizer_type": "AdamW",
     "optimizer": {
-        "lr": 0.0001,
-        "weight_decay": 1e-5
+        "lr": 0.001,
+        "weight_decay": 1e-5,
+        "lr_scheduler" : "cosign_anealing".
     },
     "trainer": {
         "epochs": 300,
@@ -28,5 +29,8 @@
         "monitor": "val/hmean",
         "monitor_mode": "max"
     },
+    "d_model" : 384,
+    "drop_out" : 0.1,
+    "max_len" : 8,
     "debug": false
 }

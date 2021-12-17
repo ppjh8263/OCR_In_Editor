@@ -28,7 +28,7 @@ def main(config, resume):
 
     wandb.init(
         project='fots',
-        name='res50_Mish_pretrained_recog_epoch300'
+        name='res50_Mish_pren_epoch300'
     )
     
     loss = E2ELoss()

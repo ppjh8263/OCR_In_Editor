@@ -56,9 +56,11 @@ class OCRLoss(nn.Module):
     def __init__(self):
         super(OCRLoss, self).__init__()
         self.ctc_loss = CTCLoss(zero_infinity=True)  # pred, pred_len, labels, labels_len
+        # self.loss =  nn.CrossEntropyLoss(reduction='mean', ignore_index=0)
 
     def forward(self, *inputs):
         gt, pred = inputs[0], inputs[1]
+        # loss = self.loss(pred.view(-1, pred.size(-1)), targets.view(-1))
         loss = self.ctc_loss(pred[0], gt[0], pred[1], gt[1])
         return loss
 

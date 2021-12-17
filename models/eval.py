@@ -63,7 +63,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
 
     parser = argparse.ArgumentParser(description='Model eval')
-    parser.add_argument('-m', '--model', default='saved/new/model_best.pth.tar', type=pathlib.Path, required=False, help='path to model')
+    parser.add_argument('-m', '--model', default='saved/new/res50_mish_pretrained-epoch240-loss-0.1100.pth.tar', type=pathlib.Path, required=False, help='path to model')
     parser.add_argument('-o', '--output_dir', default='output/new', type=pathlib.Path, help='output dir for drawn images')
     parser.add_argument('-i', '--input_dir', default='datasets/test_images', type=pathlib.Path, required=False, help='dir for input image')
     args = parser.parse_args()
