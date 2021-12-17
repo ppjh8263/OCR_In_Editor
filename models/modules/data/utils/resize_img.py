@@ -47,7 +47,10 @@ def transform(gt, input_size=512, crop=False, random_scale=np.array([0.5, 1, 2.0
     text_tags = [False if tag == '###' else True for tag in transcripts]  # ignore '###'    
 
     if numOfWords == len(transcripts):
-        h, w, _ = im.shape
+        try:
+            h, w, _ = im.shape
+        except:
+            print(image_path)
         text_polys, text_tags = check_and_validate_polys(text_polys, text_tags, (h, w))
 
         rd_scale = np.random.choice(random_scale)
@@ -79,7 +82,11 @@ def transform(gt, input_size=512, crop=False, random_scale=np.array([0.5, 1, 2.0
         new_h, new_w, _ = im.shape
         score_map, geo_map, training_mask, rectangles = generate_rbox((new_h, new_h), text_polys, text_tags)
 
-        # predict 出来的feature map 是 128 * 128， 所以 gt 需要取 /4 步长
+        for rect_idx in range(len(rectangles)):
+            if rectangles[rect_idx][0] == "*":
+                text_tags[rect_idx] = False
+                print('found worng point')
+
         images = im[:, :, ::-1].astype(np.float32)  # bgr -> rgb
         
         transcripts = list(compress(transcripts, text_tags))
@@ -111,6 +118,8 @@ def make_resize_image(gt_path, img_path, size=512):
     all_bbox, all_texts = load_gt(gt_names)
     all_img_src = [pathlib.Path(os.path.join(img_path, img_name))  for img_name in img_names]
     for file_idx in range(len(img_names)):
+        if img_names[file_idx].split('.')[-1] == 'gif':
+            continue
         transform_result = transform((all_img_src[file_idx], all_bbox[file_idx], all_texts[file_idx]), input_size=size, crop=False)
         image_path, images, transcripts, rectangles = transform_result
 
