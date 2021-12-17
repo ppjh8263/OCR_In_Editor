@@ -59,13 +59,12 @@ class ICDAR(Dataset):
         image_name = self.images[index]
         bboxes = self.bboxs[index]  # num_words * 8
         transcripts = self.transcripts[index]
-        
-        return __load_transformed_image((image_name, bboxes, transcripts))
     
-        # try:
-        #     return self.__transform((image_name, bboxes, transcripts))
-        # except Exception as e:
-        #     return self.__getitem__(torch.tensor(np.random.randint(0, len(self))))
+        try:
+            return self.__transform((image_name, bboxes, transcripts))
+            # return self.__load_transformed_image((image_name, bboxes, transcripts))
+        except Exception as e:
+            return self.__getitem__(torch.tensor(np.random.randint(0, len(self))))
 
     def __len__(self):
         return len(self.images)
@@ -158,6 +157,10 @@ class ICDAR(Dataset):
 
             transcripts = [transcripts[i] for i in selected_poly]
             mask = [not (word == '*' or word == '###') for word in transcripts]
+            for rectangle_idx in range(len(rectangles)):      # erase wrong bbox annotation
+                if rectangles[rectangle_idx][0] == '*':
+                    mask[rectangle_idx] = False
+                    print('Erase a wrong point in '+str(image_path)+' - line '+str(rectangle_idx))
             transcripts = list(compress(transcripts, mask))
             rectangles = list(compress(rectangles, mask))  # [ [pt1, pt2, pt3, pt3],  ]
 

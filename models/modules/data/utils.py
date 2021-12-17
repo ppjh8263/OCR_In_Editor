@@ -448,7 +448,7 @@ def generate_rbox(im_size, polys, tags):
                 # angle
                 geo_map[y, x, 4] = rotate_angle            
         except:
-            print('there is wrong points : ', poly)
+            # to erase wrong point
             rectanges.append("*")
             
     return score_map, geo_map, training_mask, rectanges
