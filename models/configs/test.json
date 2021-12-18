@@ -12,11 +12,11 @@
     },
     "input": "image",
     "data_loader": {
-        "data_dir": "datasets",
+        "data_dir": "datasets/test",
         "input_size": 512,
         "batch_size": 4,
         "shuffle": true,
-        "workers": 5
+        "workers": 1
     },
     "validation": {
         "skip_lt_epoch": 0,
@@ -29,7 +29,7 @@
         "weight_decay": 1e-5
     },
     "trainer": {
-        "epochs": 200,
+        "epochs": 1,
         "save_dir": "saved/",
         "save_freq": 10,
         "verbosity": 2,
@@ -39,7 +39,7 @@
     },
     "debug": true,
     "wandb": {
-        "project": "final_project",
-        "name": "crnn_base"
+        "project": "OE",
+        "name": "model_test"
     }
 }
