@@ -73,6 +73,7 @@ class ICDAR(Dataset):
     def __load_transformed_image(self, gt):
         image_path, wordBBoxes, transcripts = gt
         image = cv2.imread(image_path.as_posix())
+        image = image.astype(np.float32)
         
         rectangles = []
         for wordbbox in wordBBoxes:
@@ -164,7 +165,7 @@ class ICDAR(Dataset):
             transcripts = list(compress(transcripts, mask))
             rectangles = list(compress(rectangles, mask))  # [ [pt1, pt2, pt3, pt3],  ]
 
-            assert len(transcripts) == len(rectangles)  # make sure length of transcipts equal to length of boxes
+            assert len(transcripts) == len(rectangles)  # make sure length of transcripts equal to length of boxes
             if len(transcripts) == 0:
                 raise RuntimeError('No text found.')
 

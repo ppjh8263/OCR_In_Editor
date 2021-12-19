@@ -84,7 +84,7 @@ def transform(gt, input_size=512, crop=False, random_scale=np.array([0.5, 1, 2.0
 
         for rectangle_idx in range(len(rectangles)):      # erase wrong bbox annotation
             if rectangles[rectangle_idx][0] == '*':
-                mask[rectangle_idx] = False
+                text_tags[rectangle_idx] = False
                 print('Erase a wrong point in '+str(image_path)+' - line '+str(rectangle_idx))
 
         images = im[:, :, :].astype(np.float32)  # bgr -> rgb : im[:, :, ::-1].astype(np.float32)
@@ -136,7 +136,7 @@ def make_resize_image(gt_path, img_path, size=512):
             for line_idx in range(len(transcripts)):
                 for location in rectangles[line_idx]:
                     gt += str(location)+','
-                gt += transcripts[line_idx] + '\n'
+                gt += 'OE_pos,'+transcripts[line_idx] + '\n'
             with open(gt_path,'w') as f:
                 f.write(gt)
                 
