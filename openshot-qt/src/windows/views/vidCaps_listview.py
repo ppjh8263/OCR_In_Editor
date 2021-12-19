@@ -77,7 +77,7 @@ class VidCapsListView(QListWidget):
         layout = QBoxLayout(QBoxLayout.TopToBottom)
         self.viewer = QListWidget(self)
 
-        for i, v in enumerate(self.listCheckBox[1:]):
+        for i, v in enumerate(self.listCheckBox[1:-1]):
             if type(v) == int:
                 continue
             # Make checkbox
