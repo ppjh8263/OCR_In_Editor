@@ -1147,9 +1147,10 @@ class MainWindow(updates.UpdateWatcher, QMainWindow):
         print("Sended image", response.json())
         
         # ADD bbox detections to timeline object
-        res = response.json()
-        res.append(self.videoPreview.centeredViewport(self.videoPreview.width(), self.videoPreview.height()))
-        self.timeline_sync.detections[current_timestamp] = res
+        if response.status_code == 200:
+            res = response.json()
+            res.append(self.videoPreview.centeredViewport(self.videoPreview.width(), self.videoPreview.height()))
+            self.timeline_sync.detections[int(current_position)] = res
         self.vidCapListView.update()
         ### [End] ###
 

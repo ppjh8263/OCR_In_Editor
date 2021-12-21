@@ -423,7 +423,7 @@ class VideoWidget(QWidget, updates.UpdateInterface):
         # box_painter.translate(bbox_center_x, bbox_center_y)
         # box_painter.rotate(90)
         # box_painter.translate(-bbox_center_x, -bbox_center_y)
-        qp.setFont(QFont('Arial', min(poly_rect.height(), poly_rect.width())*0.5))
+        qp.setFont(QFont('Arial', min(poly_rect.height(), poly_rect.width())*0.6, weight=1.2))
         text_points = QPoint((start_point[0] + bbox[0][0])*ratio[0], (start_point[1] + bbox[0][1]+poly_rect.height()*0.75)*ratio[1])
         qp.drawText(text_points, translation)
 
