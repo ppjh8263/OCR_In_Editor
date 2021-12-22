@@ -12,4 +12,7 @@ def translation_en2ko(sentence):
     data = f'source=en&target=ko&text={sentence}'
     response = requests.post('https://openapi.naver.com/v1/papago/n2mt', headers=HEADERS, data=data)
     response_json=response.json()
-    return response.status_code, response_json['message']['result']['translatedText']
+    if response.status_code==200:
+        return response.status_code, response_json['message']['result']['translatedText']
+    else :
+        return response.status_code, "papago..fail..."
