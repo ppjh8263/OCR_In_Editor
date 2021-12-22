@@ -6,8 +6,6 @@ from server.api.demo import demo_router
 from server.api.fots import fots_router
 from server.api.portfolio import portfolio_router
 
-# import io
-
 app = FastAPI(description=description)
 app.include_router(fots_router)
 app.include_router(demo_router)
@@ -26,7 +24,7 @@ def startdown_event():
 
 @app.get("/")
 def read_root():
-    return "Boost Camp AI tech CV7's API"
+    return "Welcome Boost Camp AI tech CV7's API"
 
 if __name__ == '__main__':
     uvicorn.run('api:app', port=6006, host='0.0.0.0', reload=True)
