@@ -13,7 +13,7 @@ class Pren(nn.Module):
         super(Pren, self).__init__()
 
         d_model = net_configs["d_model"]
-        n_r = 5
+        n_r = 8
         max_len = net_configs["max_len"]
         dropout = net_configs["drop_out"]
 
@@ -63,6 +63,6 @@ class Pren(nn.Module):
 
         logits = self.linear(y)
         # add log_softmax to converge output
-        # output = F.log_softmax(logits, dim=2)
+        output = F.log_softmax(logits, dim=2)
 
-        return logits
+        return output

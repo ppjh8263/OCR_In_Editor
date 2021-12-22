@@ -122,7 +122,6 @@ class OCRModel:
             else:
                 return score_map, geo_map, (None, None), pred_boxes, pred_mapping, None
 
-        rois
         preds = self.recognizer(rois)
         preds_size = torch.LongTensor([preds.size(0)] * int(preds.size(1))).to(device)
 

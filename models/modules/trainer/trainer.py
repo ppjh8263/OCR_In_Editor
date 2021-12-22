@@ -57,18 +57,18 @@ class Trainer(BaseTrainer):
 
         total_loss = 0
         total_metrics = np.zeros(3)  # precious, recall, hmean
+        scheduler = torch.optim.lr_scheduler.OneCycleLR(
+                                                        self.optimizer,
+                                                        max_lr=self.config["optimizer"]['lr'],
+                                                        steps_per_epoch=len(self.data_loader),
+                                                        epochs=epoch,
+                                                        pct_start=0.2
+                                                        )
         for batch_idx, gt in enumerate(self.data_loader):
             try:
                 image_paths, img, score_map, geo_map, training_mask, transcripts, boxes, mapping = gt
                 img, score_map, geo_map, training_mask = self._to_tensor(img, score_map, geo_map, training_mask)
 
-                scheduler = torch.optim.lr_scheduler.OneCycleLR(
-                                                        self.optimizer,
-                                                        max_lr=self.config["optimizer"],
-                                                        steps_per_epoch=len(self.data_loader),
-                                                        epochs=epoch,
-                                                        pct_start=0.05
-                                                        )
                 self.optimizer.zero_grad()
                 pred_score_map, pred_geo_map, pred_recog, pred_boxes, pred_mapping, rois = self.model.forward(img,
                                                                                                               boxes,
@@ -80,6 +80,8 @@ class Trainer(BaseTrainer):
                 label_lengths = label_lengths.to(self.device)
                 recog = (labels, label_lengths)
 
+                # print(f"pred is {pred_recog[0].size()}")
+                
                 iou_loss, cls_loss, reg_loss = self.loss(score_map, pred_score_map, geo_map, pred_geo_map, recog,
                                                          pred_recog, training_mask)
                 loss = iou_loss + cls_loss + reg_loss

@@ -18,8 +18,8 @@ class ICDAR(Dataset):
     def __init__(self, data_root, input_size=512):
         data_root = pathlib.Path(data_root)
         self.input_size = input_size
-        self.imagesRoot = data_root / 'train_images'
-        self.gtRoot = data_root / 'train_gts'
+        self.imagesRoot = data_root / 'train_images_OEpos'
+        self.gtRoot = data_root / 'train_gts_OEpos'
         self.images, self.bboxs, self.transcripts = self.__load_gt()
         # print(self.imagesRoot)
 
@@ -45,7 +45,7 @@ class ICDAR(Dataset):
                     x1, y1, x2, y2, x3, y3, x4, y4 = list(map(float, text[:8]))
                     bbox = [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]
                     delim, label = '', ''
-                    for i in range(8, len(text)):
+                    for i in range(9, len(text)):
                         label += delim + text[i]
                         delim = ','
                     texts.append(label.strip())

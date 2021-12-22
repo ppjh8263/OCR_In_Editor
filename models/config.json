@@ -1,11 +1,11 @@
 {
-    "name": "res101_scheduler",
+    "name": "scheduler2017",
     "cuda": true,
     "gpus": [0],
     "data_loader": {
         "data_dir": "datasets",
         "input_size": 512,
-        "batch_size": 8,
+        "batch_size": 16,
         "shuffle": true,
         "workers": 5
     },
@@ -17,8 +17,7 @@
     "optimizer_type": "AdamW",
     "optimizer": {
         "lr": 0.001,
-        "weight_decay": 1e-5,
-        "lr_scheduler" : "cosign_anealing".
+        "weight_decay": 1e-5
     },
     "trainer": {
         "epochs": 300,
