@@ -9,7 +9,7 @@ HEADERS = {
 str1="demo trasnslation of bbox1"
 
 def translation_en2ko(sentence):
-    data = f'source=en&target=ko&text={sentence}'
+    data = f'source=en&target=ko&text={sentence}'.encode('utf-8')
     response = requests.post('https://openapi.naver.com/v1/papago/n2mt', headers=HEADERS, data=data)
     response_json=response.json()
     if response.status_code==200:
