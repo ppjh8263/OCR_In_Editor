@@ -24,7 +24,7 @@ def startdown_event():
 
 @app.get("/")
 def read_root():
-    return "Boost Camp AI tech CV7's API"
+    return "Welcome Boost Camp AI tech CV7's API"
 
 if __name__ == '__main__':
     uvicorn.run('api:app', port=6006, host='0.0.0.0', reload=True)
