@@ -35,10 +35,10 @@ def load_model_at_run():
 
 @torch.no_grad()
 def predict(im):
-    h, _, _ = im.shape
     global model
     with_gpu = True if torch.cuda.is_available() else False
     if model is None:
+        print("model load................")
         model_path = 'saved/new/model_best.pth.tar'
         model = load_model(model_path, with_gpu)
 
@@ -51,17 +51,16 @@ def predict(im):
     im_resized = im_resized.unsqueeze(0)
     im_resized = im_resized.permute(0, 3, 1, 2)
 
-    score, geometry, preds, boxes, mapping, rois = model.forward(im_resized, None, None)
+    _, _, preds, boxes, _, _ = model.forward(im_resized, None, None)
 
     img = np.array(im).astype(np.uint8)
     img = img[:, :, ::-1]
     pred_transcripts=[]
     if len(boxes) != 0:
-        scores = boxes[:, 8].reshape(-1)
+        # scores = boxes[:, 8].reshape(-1)
         boxes = boxes[:, :8].reshape((-1, 4, 2))
         boxes[:, :, 0] /= ratio_w
         boxes[:, :, 1] /= ratio_h
-        # boxes[:, :, 1] = h - boxes[:, :, 1]
         # decode predicted text
         pred, preds_size = preds
         _, pred = pred.max(2)

@@ -17,7 +17,6 @@ def read_root():
     return "Boost Camp AI tech CV7's API fots router"
 
 
-
 @fots_router.post("/image", tags=['fots'])
 async def fots_image(file: UploadFile = File(...)):
     time_start = time.monotonic()
@@ -32,7 +31,8 @@ async def fots_image(file: UploadFile = File(...)):
 async def fots_base64(file: UploadFile = File(...)):
     time_start = time.monotonic()
     image = read_imagefile(base64.b64decode(await file.read()))
-
+    t1 = time.monotonic()
+    print(time_start - t1)
     return make_fots_response_no_split(image,time_start)
 
 @fots_router.post("/image/nopapago", tags=['fots'])
@@ -131,8 +131,14 @@ def make_fots_response(image,time_start):
     return prediction
 
 def make_fots_response_no_split(image,time_start):
+    t1=time.monotonic()
     boxes, pred_transcripts = predict(image)
+    t2=time.monotonic() - t1
+    print(f"ifer time : {t2}")
+    t1=time.monotonic()
     colors = color_list(image, boxes)
+    t2 = time.monotonic() - t1
+    print(f'colors time : {t2:.2f}s')
     print(f'Detect Text : {pred_transcripts}')
     prediction=[len(boxes)]
     for idx,(bbox,text,bbox_color) in enumerate(zip(boxes, pred_transcripts, colors)):
@@ -152,7 +158,6 @@ def make_fots_response_no_split(image,time_start):
                     'translation':f'Papago API Error [{resp_code_papago}]...',
                     'point':bbox.tolist()}
                 )
-    
     running_time = time.monotonic() - time_start
     print("*****", datetime.datetime.now(), "*****")
     print(f'inference time : {running_time:.2f}s')
