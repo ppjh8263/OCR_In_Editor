@@ -10,10 +10,34 @@
 - 모델이 구한 글자와 배경색을 같이 계산하여 최대한 영상에 자연스럽게 적용될 수 있도록 결과를 출력
 - 번역된 자막을 **원하는 내용만 선택 적용**할 수 있어 영상 편집 시 유용하게 사용할 수 있음
 - 효율적인 배포를 위해 **Github Action**과 **Docker**를 사용하여 **CI/CD**를 진행
-### 🔎Demo
+### 🔎예시
+![예시](https://user-images.githubusercontent.com/82632580/147242498-9c8da7ea-a159-491c-ac53-009616c47246.png)
 
-### ⚙️Pipeline
+## ⚙️Pipeline
+![화면 캡처 2021-12-23 210528](https://user-images.githubusercontent.com/82632580/147240587-577c9408-8add-4cd5-b465-6dc6d665669e.png)
+### Model 설정  
+- 영상 편집이라는 목적에 맞게 inference가 빠르고 가벼운 모델 선정    
+  
+![화면 캡처 2021-12-23 212230](https://user-images.githubusercontent.com/82632580/147240612-5ec7ecf5-eee4-4f0c-a487-fd9f31f07abc.png) 
 
+**실험에 사용된 Recognizer**    
 
+![crnn](https://user-images.githubusercontent.com/82632580/147243904-0b220b71-37bf-45a0-bb9c-741fdf97ed15.png)
 
+![rnet](https://user-images.githubusercontent.com/82632580/147243944-30526803-694b-4c66-adaa-993009688e4b.png)
 
+### Openshot(영상편집툴) 
+![open](https://user-images.githubusercontent.com/82632580/147244480-0eb298f9-64e7-4e7a-bf07-2d57e85002ae.png)  
+
+### Server via FastAPI
+
+![ser](https://user-images.githubusercontent.com/82632580/147244791-c9994d60-fa4a-4b01-875c-921605bac396.png)
+1. 기능
+    - 이미지 POST
+    - OCR Model Inference
+    - Get background & word color
+    - Text Translate with Papago
+2. CI & CD
+    - Github Action과 Docker사용
+    - CI & CD 결과를 즉각적으로 알 수 있게 Slack으로 결과 전송
+    - base Docker Image 생성하여 재배포 시간 30초 이내 시행
