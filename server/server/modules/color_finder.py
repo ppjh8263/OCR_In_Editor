@@ -32,7 +32,6 @@ def cutting_img(img, box):
 
 # 이미지를 받으면 색이 많은것, 2번째로 많은 것을 return
 def Find_MuchColor(img):
-    time_start = time.monotonic()
     clt = KMeans(n_clusters=3)
 
     k_cluster = clt.fit(img.reshape(-1, 3))
@@ -43,9 +42,6 @@ def Find_MuchColor(img):
         perc[i] = np.round(counter[i]/n_pixels, 2)
     perc = sorted(perc.items(), key = lambda item: item[1], reverse = True)
 
-    running_time = time.monotonic() - time_start
-    print(datetime.datetime.now())
-    print(f'Find_MuchColor : {running_time:.2f}s')
     return [k_cluster.cluster_centers_[perc[0][0]].tolist(), k_cluster.cluster_centers_[perc[1][0]].tolist()]
 
 def calc_color(img,idx):
