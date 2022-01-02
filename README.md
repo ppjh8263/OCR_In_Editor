@@ -1,3 +1,6 @@
+# Welcome Our OCR In Editor Project
+### I was in charge of the Backend in this project. Please check the [server folder](https://github.com/ppjh8263/OCR_In_Editor/tree/main/server)!
+
 # :movie_camera: 오이(OCR_In_Editor)
 
 ### CV-07 컴퓨터구조 :computer: 
